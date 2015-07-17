@@ -1,0 +1,77 @@
+﻿@model  System.Dynamic.ExpandoObject
+@{
+    Layout = null;
+    int status = ViewBag.status;
+    string message = ViewBag.message;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script type="text/javascript" src="/scripts/test/j.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var msg = '@ViewBag.message';
+
+            $('h1').text("msg:" + msg);
+            var count = -1;
+
+            (function () {
+                var fun = function () {
+                    if (count >= 0) {
+                        $('h1').text("rest:" + count);
+                        if (count-- === 0) {
+                            $('h1').text("start");
+                            $('body > div').children().hide();
+                            $('img').attr('src', 'http://www.baidu.com/img/bd_logo1.png').show();
+                        }
+                        else
+                            setTimeout(fun, 1000);
+                    }
+                }
+                fun();
+            })();
+            //window.applicationCache.addEventListener('updateready', function() {
+            //   // window.applicationCache.swapCache();
+
+            //}, false);
+            var lastInput = '';
+            $(':text').eq(0).on('input', function (e) {
+                var v = $(this).val();
+
+                if (v.length <= 4)
+                    lastInput = v;
+                if (v.length === 4)
+                    $('h1').text(new Date().getTime());
+                else {
+                    $('h1').text("len:" + v.length);
+                }
+                $(this).val(lastInput);
+
+            });
+
+            $('button').click(function () {
+                $('h1').text($('select').find("option:selected").text() || 'none');
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <div>
+        <input  type="text" />
+        <button>click</button>
+    </div>
+    <select>
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+    </select>
+    <image style="width: 100%; display: none;" />
+</body>
+</html>

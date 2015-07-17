@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "主页";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                若要了解有关 ASP.NET MVC 的详细信息，请访问
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>。
+                该页提供 <mark>视频、教程和示例</mark> 以帮助你充分利用 ASP.NET MVC。
+                如果你对 ASP.NET MVC 有任何疑问，请访问
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">我们的论坛</a>。
+            </p>
+        </div>
+    </section>
+}
+
+<button>ClickMe</button>
+<h3>下面是我们的建议:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>开始使用</h5>
+        ASP.NET MVC 为你提供了一种用于生成动态网站的方式，
+        该方式基于模式，十分强大，使你可以清晰地分离各种考虑因素，让你能够完全控制标记，
+        以便进行灵活而有趣的开发。ASP.NET MVC 包括许多功能，你可以使用这些功能进行
+        TDD 友好的快速开发，以创建使用
+        最新 Web 标准的复杂应用程序。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">了解详细信息...</a>
+    </li>
+
+    <li class="two">
+        <h5>添加 NuGet 程序包并快速开始编码</h5>
+        通过 NuGet，可以轻松地安装和更新免费的库和工具。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">了解详细信息...</a>
+    </li>
+
+    <li class="three">
+        <h5>查找 Web 宿主</h5>
+        你可以轻松找到所提供的功能和价格
+        都适合你应用程序的 Web 宿主公司。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">了解详细信息...</a>
+    </li>
+
+    <li class="four">
+        <h5>电影管理页面</h5>
+        <a href="/movies/index">进入</a>
+    </li>
+</ol>
+<a href="javascript:void(0)" id="openApp">贴吧客户端</a>
+<script type="text/javascript">
+    var s = "https://itunes.apple.com/cn/app/id477927812";
+    document.getElementById('openApp').onclick = function (e) {
+        // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+        // 否则打开a标签的href链接
+        //var ifr = document.createElement('iframe');
+        //ifr.src = 'com.baidu.tieba://';//'weixin://';
+        //ifr.style.display = 'none';
+        //document.body.appendChild(ifr);
+        window.location = 'weixin://';
+        window.setTimeout(function () {
+            window.location = s;
+        }, 1000);
+    };
+</script>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        //$('button').click(function () {
+        //    $('a').toggle('slow');
+        //});
+
+        //var wait = function () {
+        //    var dtd = $.Deferred();
+        //    var tasks = function () {
+        //        document.title = '完成';
+        //        return dtd.resolve();
+        //    };
+        //    setTimeout(tasks, 5000);
+        //    return dtd.promise();
+        //};
+
+        //$.when(wait(), wait())
+        //    .then(function () {
+        //        $('button').text("哈哈，成功了！");
+        //    },
+        //        function () {
+        //            $('button').text("出错啦！");
+        //        });
+
+
+        $(function () {
+            $.post('http://localhost:54718/api/club/search_club',
+                { key: 1 },
+                function (data, status, xhr) {
+                    alert(data);
+                },
+                'json');
+        });
+    </script>
+
+}
+

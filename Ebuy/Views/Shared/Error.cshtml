@@ -1,0 +1,14 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "错误";
+}
+
+<hgroup class="title">
+    <h1 class="error">错误。</h1>
+    <h2 class="error">@Response.Status</h2>
+    <h3>Controller: @Model.ControllerName   </h3>
+    <h3>Action: @Model.ActionName  </h3>
+    <h3>ExceptionMessage: @Model.Exception.Message </h3>
+    <h3>状态代码: @Response.StatusCode</h3>
+</hgroup>

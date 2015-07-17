@@ -1,0 +1,5 @@
+﻿------------------
+MyDb.Designer.cs
+MyDb.Context.cs
+MyDb.cs
+------------------

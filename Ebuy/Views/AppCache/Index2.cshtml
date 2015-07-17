@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html >
+
+<html manifest="@Url.Content("~/Cache/test1.appcache")" >
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index2</title>
+    <script type="text/javascript" src="/scripts/test/j.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('h1').text("No." + new Date().getTime());
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <div>
+    </div>
+</body>
+</html>

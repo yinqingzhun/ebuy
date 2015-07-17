@@ -1,0 +1,157 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script src="/Scripts/jquery-2.1.3.js"></script>
+    <title>this's a demo</title>
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
+    <style type="text/css">
+        .banner {
+            display: block;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+            .banner .turnplate {
+                display: block;
+                width: 100%;
+                position: relative;
+                margin: 0 auto;
+                background-image: url('/images/turnplate-bg.png');
+                background-size: 100% auto;
+                padding: 18px;
+            }
+
+                .banner .turnplate .item {
+                    width: 100%;
+                }
+
+                .banner .turnplate img.pointer {
+                    position: absolute;
+                    width: 31.5%;
+                    height: 42.5%;
+                    left: 34.6%;
+                    top: 23%;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="turnplate">
+            <img class="item" id="wheelcanvas" src="/images/pan.png" style="transform: rotate(0);" />
+            <img class="pointer" src="/images/turnplate-pointer.png">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+
+            var rotater = (function () {
+                var ctx = $('.item');
+
+                var _angle = 0;
+                var _handle;
+                var _run = true;
+                var _step = 8;
+                var _slow;
+                var _period = 10;
+                var _target = 0;
+
+                function rotateInner(angle, step, callback) {
+                    _run = true;
+                    if (step > 0) {
+                        var v = 'rotate(' + angle + 'deg)';
+                        ctx.css('-webkit-transform', v);
+                        if (_run)
+                            callback && callback.call(null, angle, step);
+                        _angle = angle;
+                        //console.log('angle:' + angle + ',step:' + step);
+                    } else {
+                        _run = false;
+                    }
+
+                }
+
+                function rotate(angle, step) {
+                    angle = (angle + step) % 360;
+                    _handle = setTimeout(function () {
+                        rotateInner(angle, step, rotate);
+                    }, _period);
+                }
+
+                function slowDown(target, whenStop) {
+                    if (target && isFinite(target)) {
+                        target = target % 360;
+                        if (target < 0)
+                            target += 360;
+                        _target = target;
+                    }
+                    if (!_run)
+                        return;
+                    clearTimeout(_handle);
+                    _slow = false;
+
+                    function slowDownInner(angle, step) {
+                        angle = angle % 360;
+                        if (angle < 0)
+                            target += 360;
+
+                        var _decDelta = 0.99;
+                        var _dist = 134.9894;
+                        var _tolerance = 0.05;
+
+                        if (_slow) {
+                            step = step * _decDelta;
+
+                        } else if (_target > _dist) {
+                            var diff = _target - _dist - angle;
+                            if (diff <= _step && diff >= 0) {
+                                console.log('_target:', _target, 'diff:', diff, '_dist', _dist, 'angle', angle);
+                                step = step * _decDelta;
+                                _slow = true;
+                            }
+                        } else {
+                            if (_target - _dist - angle + 360 < 1) {
+                                console.log('_target:', _target, 'current:', (_tolerance + _dist + angle - 360 - _target), '_dist', _dist, 'angle', angle, '_tolerance', _tolerance);
+                                step = step * _decDelta;
+                                _slow = true;
+                            }
+                        }
+
+
+                        console.log('差值:' + Math.abs(angle - _target), 'step', step);
+                        if (Math.abs(angle - _target) < 1 || Math.abs(angle - _target) > 359) {
+                            step = 0;
+                            _run = false;
+                            whenStop && whenStop();
+                        }
+
+                        angle = (angle + step) % 360;
+                        _handle = setTimeout(function () {
+                            rotateInner(angle, step, slowDownInner);
+                        }, _period);
+                    }
+
+                    _run = true;
+                    slowDownInner(_angle, _step);
+
+                }
+
+                return {
+                    slowDown: slowDown,
+                    rotate: function () { rotate(0, _step) }
+                };
+            })();
+            rotater.rotate();
+            setTimeout(function () { rotater.slowDown(-2); }, 2000);
+        });
+
+    </script>
+</body>
+</html>

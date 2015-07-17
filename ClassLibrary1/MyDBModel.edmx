@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Com.Everrest.Ebuy.MyDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ComEverrestEbuyMyDbModelStoreContainer">
+          <EntitySet Name="AOH_ForumTopic" EntityType="Com.Everrest.Ebuy.MyDbModel.Store.AOH_ForumTopic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AOH_JoinWelfare" EntityType="Com.Everrest.Ebuy.MyDbModel.Store.AOH_JoinWelfare" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AOH_SeckillingWinner" EntityType="Com.Everrest.Ebuy.MyDbModel.Store.AOH_SeckillingWinner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AOH_Welfare" EntityType="Com.Everrest.Ebuy.MyDbModel.Store.AOH_Welfare" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="numbers" EntityType="Com.Everrest.Ebuy.MyDbModel.Store.numbers" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_welfare_id" Association="Com.Everrest.Ebuy.MyDbModel.Store.fk_welfare_id">
+            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
+            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AOH_ForumTopic">
+          <Key>
+            <PropertyRef Name="ForumTopicID" />
+          </Key>
+          <Property Name="ForumTopicID" Type="int" Nullable="false" />
+          <Property Name="PicCover" Type="varchar" MaxLength="1000" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="AOH_JoinWelfare">
+          <Key>
+            <PropertyRef Name="JoinWelfareID" />
+          </Key>
+          <Property Name="JoinWelfareID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserPhoneNum" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="WelfareId" Type="int" Nullable="false" />
+          <Property Name="JoinWelfareTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AOH_SeckillingWinner">
+          <Key>
+            <PropertyRef Name="WinnerId" />
+          </Key>
+          <Property Name="WinnerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="EffectiveTime" Type="datetime" />
+          <Property Name="Category" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AOH_Welfare">
+          <Key>
+            <PropertyRef Name="WelfareId" />
+          </Key>
+          <Property Name="WelfareId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Requirement" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="SupportedPersonCount" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="DisplayNo" Type="int" Nullable="false" />
+          <Property Name="CoverUrl" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Np" Type="int" />
+        </EntityType>
+        <EntityType Name="numbers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_welfare_id">
+          <End Role="AOH_Welfare" Type="Com.Everrest.Ebuy.MyDbModel.Store.AOH_Welfare" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AOH_JoinWelfare" Type="Com.Everrest.Ebuy.MyDbModel.Store.AOH_JoinWelfare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOH_Welfare">
+              <PropertyRef Name="WelfareId" />
+            </Principal>
+            <Dependent Role="AOH_JoinWelfare">
+              <PropertyRef Name="WelfareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Com.Everrest.Ebuy.MyDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MyDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AOH_ForumTopic" EntityType="Com.Everrest.Ebuy.MyDbModel.AOH_ForumTopic" />
+          <EntitySet Name="AOH_JoinWelfare" EntityType="Com.Everrest.Ebuy.MyDbModel.AOH_JoinWelfare" />
+          <EntitySet Name="AOH_SeckillingWinner" EntityType="Com.Everrest.Ebuy.MyDbModel.AOH_SeckillingWinner" />
+          <EntitySet Name="AOH_Welfare" EntityType="Com.Everrest.Ebuy.MyDbModel.AOH_Welfare" />
+          <EntitySet Name="numbers" EntityType="Com.Everrest.Ebuy.MyDbModel.numbers" />
+          <AssociationSet Name="fk_welfare_id" Association="Com.Everrest.Ebuy.MyDbModel.fk_welfare_id">
+            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
+            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AOH_ForumTopic">
+          <Key>
+            <PropertyRef Name="ForumTopicID" />
+          </Key>
+          <Property Name="ForumTopicID" Type="Int32" Nullable="false" />
+          <Property Name="PicCover" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PicUrl" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AOH_JoinWelfare">
+          <Key>
+            <PropertyRef Name="JoinWelfareID" />
+          </Key>
+          <Property Name="JoinWelfareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserPhoneNum" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="WelfareId" Type="Int32" Nullable="false" />
+          <Property Name="JoinWelfareTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AOH_Welfare" Relationship="Com.Everrest.Ebuy.MyDbModel.fk_welfare_id" FromRole="AOH_JoinWelfare" ToRole="AOH_Welfare" />
+        </EntityType>
+        <EntityType Name="AOH_SeckillingWinner">
+          <Key>
+            <PropertyRef Name="WinnerId" />
+          </Key>
+          <Property Name="WinnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="EffectiveTime" Type="DateTime" Precision="3" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AOH_Welfare">
+          <Key>
+            <PropertyRef Name="WelfareId" />
+          </Key>
+          <Property Name="WelfareId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Requirement" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="SupportedPersonCount" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Detail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="DisplayNo" Type="Int32" Nullable="false" />
+          <Property Name="CoverUrl" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Np" Type="Int32" />
+          <NavigationProperty Name="AOH_JoinWelfare" Relationship="Com.Everrest.Ebuy.MyDbModel.fk_welfare_id" FromRole="AOH_Welfare" ToRole="AOH_JoinWelfare" />
+        </EntityType>
+        <EntityType Name="numbers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="fk_welfare_id">
+          <End Role="AOH_Welfare" Type="Com.Everrest.Ebuy.MyDbModel.AOH_Welfare" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AOH_JoinWelfare" Type="Com.Everrest.Ebuy.MyDbModel.AOH_JoinWelfare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AOH_Welfare">
+              <PropertyRef Name="WelfareId" />
+            </Principal>
+            <Dependent Role="AOH_JoinWelfare">
+              <PropertyRef Name="WelfareId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ComEverrestEbuyMyDbModelStoreContainer" CdmEntityContainer="MyDbEntities">
+          <EntitySetMapping Name="AOH_ForumTopic">
+            <EntityTypeMapping TypeName="Com.Everrest.Ebuy.MyDbModel.AOH_ForumTopic">
+              <MappingFragment StoreEntitySet="AOH_ForumTopic">
+                <ScalarProperty Name="ForumTopicID" ColumnName="ForumTopicID" />
+                <ScalarProperty Name="PicCover" ColumnName="PicCover" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AOH_JoinWelfare">
+            <EntityTypeMapping TypeName="Com.Everrest.Ebuy.MyDbModel.AOH_JoinWelfare">
+              <MappingFragment StoreEntitySet="AOH_JoinWelfare">
+                <ScalarProperty Name="JoinWelfareID" ColumnName="JoinWelfareID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPhoneNum" ColumnName="UserPhoneNum" />
+                <ScalarProperty Name="WelfareId" ColumnName="WelfareId" />
+                <ScalarProperty Name="JoinWelfareTime" ColumnName="JoinWelfareTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AOH_SeckillingWinner">
+            <EntityTypeMapping TypeName="Com.Everrest.Ebuy.MyDbModel.AOH_SeckillingWinner">
+              <MappingFragment StoreEntitySet="AOH_SeckillingWinner">
+                <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="EffectiveTime" ColumnName="EffectiveTime" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AOH_Welfare">
+            <EntityTypeMapping TypeName="Com.Everrest.Ebuy.MyDbModel.AOH_Welfare">
+              <MappingFragment StoreEntitySet="AOH_Welfare">
+                <ScalarProperty Name="WelfareId" ColumnName="WelfareId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="SupportedPersonCount" ColumnName="SupportedPersonCount" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DisplayNo" ColumnName="DisplayNo" />
+                <ScalarProperty Name="CoverUrl" ColumnName="CoverUrl" />
+                <ScalarProperty Name="Np" ColumnName="Np" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="numbers">
+            <EntityTypeMapping TypeName="Com.Everrest.Ebuy.MyDbModel.numbers">
+              <MappingFragment StoreEntitySet="numbers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
