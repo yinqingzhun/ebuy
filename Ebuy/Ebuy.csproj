@@ -199,7 +199,7 @@
     <Compile Include="Models\MovieModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
-    <Compile Include="SignalR\MyHub1.cs" />
+    <Compile Include="SignalR\MyConnection1.cs" />
     <Compile Include="SignalR\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,7 +280,6 @@
     <Content Include="Pages\openApp.html" />
     <Content Include="Pages\rotate.html" />
     <Content Include="Pages\flexBox.html" />
-    <Content Include="Pages\signalr.html" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -302,6 +301,7 @@
     <Content Include="Scripts\test\exercise.js" />
     <Content Include="Scripts\test\jd.js" />
     <Content Include="Scripts\test\mbase.js" />
+    <Content Include="SignalR\index.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

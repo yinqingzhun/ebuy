@@ -65,6 +65,12 @@
             window.location = s;
         }, 1000);
     };
+    try {
+        window.a && window.a();
+    } catch (e) {
+        alert(e);
+    }
+
 </script>
 
 @section scripts
@@ -94,14 +100,14 @@
         //        });
 
 
-        $(function () {
-            $.post('http://localhost:54718/api/club/search_club',
-                { key: 1 },
-                function (data, status, xhr) {
-                    alert(data);
-                },
-                'json');
-        });
+        //$(function () {
+        //    $.post('http://localhost:54718/api/club/search_club',
+        //        { key: 1 },
+        //        function (data, status, xhr) {
+        //            alert(data);
+        //        },
+        //        'json');
+        //});
     </script>
 
 }

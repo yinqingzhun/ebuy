@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.Data.SqlClient;
+using System.IO;
 using System.Net;
 using System.Security.Permissions;
 using System.Web.Mvc;
@@ -13,6 +15,7 @@ namespace Ebuy.Controllers
         [HttpGetActionMethodSelector(HttpMethod = "get")]
         public ActionResult Index()
         {
+
             ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。";
             return View();
         }
