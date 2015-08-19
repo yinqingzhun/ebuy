@@ -3,8 +3,12 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Security.Permissions;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Ebuy.CustomAttribute;
+using Entity;
+using StackExchange.Profiling;
+using StackExchange.Profiling.Data;
 
 namespace Ebuy.Controllers
 {
@@ -15,9 +19,27 @@ namespace Ebuy.Controllers
         [HttpGetActionMethodSelector(HttpMethod = "get")]
         public ActionResult Index()
         {
+            var profiler = MiniProfiler.Current;
+            string s = "";
+            //using (profiler.Step("find SeckillingWinner in db:"))
+            //{
+            //    MyDbEntities db = new MyDbEntities();
+            //    var o = db.AOH_SeckillingWinner.Find(10);
+            //    s = o == null ? "Not Found" : "Found!";
+            //}
+            using (var conn = new ProfiledDbConnection(new SqlConnection(WebConfigurationManager.ConnectionStrings["aoh"].ToString()), profiler))
+            {
+                conn.Open();
+                var command = conn.CreateCommand();
+                string sql = "select count(1) from sys.objects";
+                command.CommandText = sql;
+                object o = command.ExecuteScalar();
+                int i = int.Parse(o.ToString());
+            }
 
-            ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。";
+            ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。" + s;
             return View();
+
         }
 
         [ActionName("Index")]

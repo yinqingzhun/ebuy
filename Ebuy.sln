@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ebuy", "Ebuy\Ebuy.csproj", "{3CBBD015-1BD7-4D52-9703-D03710B6ADA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ebuy.Tests", "Ebuy.Tests\Ebuy.Tests.csproj", "{68163634-C7BA-47CA-93E7-F1F7052A5B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFEntity", "Entity\EFEntity.csproj", "{A9642F11-4B89-4190-9ADC-A4843D1C766D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGenerator", "Entity\EFGenerator.csproj", "{A9642F11-4B89-4190-9ADC-A4843D1C766D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6CB78AA4-6571-4A50-BEEB-123340208018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "DbAccess\DbAccess.csproj", "{9CF128BE-C5B9-4E80-9493-E724435E7EA6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{B4330553-4451-4476-9549-ED5C9C681C2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbBase", "DbBase\DbBase.csproj", "{9CF128BE-C5B9-4E80-9493-E724435E7EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,6 @@ Global
 		{9CF128BE-C5B9-4E80-9493-E724435E7EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF128BE-C5B9-4E80-9493-E724435E7EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF128BE-C5B9-4E80-9493-E724435E7EA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4330553-4451-4476-9549-ED5C9C681C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4330553-4451-4476-9549-ED5C9C681C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4330553-4451-4476-9549-ED5C9C681C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4330553-4451-4476-9549-ED5C9C681C2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using Ebuy.CustomAttribute;
 using System.Web;
 using System.Web.Mvc;
-
+using StackExchange.Profiling;
 namespace Ebuy
 {
     public class FilterConfig

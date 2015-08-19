@@ -46,14 +46,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\code\NewAuto\AutoFunsClubApp\Src\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -152,17 +154,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy "$(ProjectDir)e.txt" c:\
-xcopy "$(ProjectDir)*.cs" "$(SolutionDir)Model"  /exclude:c:\e.txt /Y/D
-xcopy "$(ProjectDir)MyDb.Context.cs" "$(SolutionDir)DbAccess" /Y/D
-xcopy "$(ProjectDir)MyDb.Designer.cs" "$(SolutionDir)DbAccess" /Y/D
-xcopy "$(ProjectDir)MyDb.edmx.diagram" "$(SolutionDir)DbAccess" /Y/D
-xcopy "$(ProjectDir)MyDb.cs" "$(SolutionDir)DbAccess" /Y/D
-xcopy "$(ProjectDir)MyDb.edmx" "$(SolutionDir)DbAccess" /Y/D</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)*.cs" "$(SolutionDir)Model"  /exclude:$(SolutionDir)e.txt /Y/D
+xcopy "$(ProjectDir)MyDb.Context.cs" "$(SolutionDir)DbBase" /Y/D
+xcopy "$(ProjectDir)MyDb.edmx" "$(SolutionDir)DbBase" /Y/D
+
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

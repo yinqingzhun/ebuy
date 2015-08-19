@@ -76,7 +76,28 @@
 @section scripts
 {
     <script type="text/javascript">
+        function Animal(gender) {
+            this.gender = gender;
+            this.showGender = function () {
+                console.log(this.gender);
+            }
+        }
+        function Dog(gender, name) {
+            Animal.call(this, gender);
+            this.name = name;
+            this.showName = function () {
+                console.log(this.name);
+            }
+        }
+        function DummyAnimal() { }
+        DummyAnimal.prototype = Animal.prototype;
 
+        Dog.prototype = DummyAnimal.prototype; // 先假设 Animal 函数没有参数
+        Dog.prototype.constructor = Dog;
+
+        var dog = new Dog('tom');
+
+        dog instanceof Animal; // true
         //$('button').click(function () {
         //    $('a').toggle('slow');
         //});

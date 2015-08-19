@@ -4,18 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Ebuy.MyDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="EbuyMyDbModelStoreContainer">
-          <EntitySet Name="AOH_ForumTopic" EntityType="Ebuy.MyDbModel.Store.AOH_ForumTopic" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AOH_JoinWelfare" EntityType="Ebuy.MyDbModel.Store.AOH_JoinWelfare" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AOH_SeckillingWinner" EntityType="Ebuy.MyDbModel.Store.AOH_SeckillingWinner" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AOH_Welfare" EntityType="Ebuy.MyDbModel.Store.AOH_Welfare" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="numbers" EntityType="Ebuy.MyDbModel.Store.numbers" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="fk_welfare_id" Association="Ebuy.MyDbModel.Store.fk_welfare_id">
-            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
-            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="Ebuy.MyDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="AOH_ForumTopic">
           <Key>
             <PropertyRef Name="ForumTopicID" />
@@ -28,10 +17,10 @@
           <Key>
             <PropertyRef Name="JoinWelfareID" />
           </Key>
-          <Property Name="JoinWelfareID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="JoinWelfareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="UserPhoneNum" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserPhoneNum" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="WelfareId" Type="int" Nullable="false" />
           <Property Name="JoinWelfareTime" Type="datetime" Nullable="false" />
         </EntityType>
@@ -39,43 +28,43 @@
           <Key>
             <PropertyRef Name="WinnerId" />
           </Key>
-          <Property Name="WinnerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WinnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="CreatedTime" Type="datetime" Nullable="false" />
           <Property Name="Enabled" Type="bit" Nullable="false" />
           <Property Name="EffectiveTime" Type="datetime" />
-          <Property Name="Category" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="AOH_Welfare">
           <Key>
             <PropertyRef Name="WelfareId" />
           </Key>
-          <Property Name="WelfareId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WelfareId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="StartTime" Type="datetime" Nullable="false" />
           <Property Name="EndTime" Type="datetime" Nullable="false" />
-          <Property Name="Requirement" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Requirement" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="SupportedPersonCount" Type="int" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Type" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="DisplayNo" Type="int" Nullable="false" />
-          <Property Name="CoverUrl" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CoverUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Np" Type="int" />
         </EntityType>
         <EntityType Name="numbers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Value" Type="int" />
           <Property Name="name" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="fk_welfare_id">
-          <End Role="AOH_Welfare" Type="Ebuy.MyDbModel.Store.AOH_Welfare" Multiplicity="1">
+          <End Role="AOH_Welfare" Type="Self.AOH_Welfare" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AOH_JoinWelfare" Type="Ebuy.MyDbModel.Store.AOH_JoinWelfare" Multiplicity="*" />
+          <End Role="AOH_JoinWelfare" Type="Self.AOH_JoinWelfare" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AOH_Welfare">
               <PropertyRef Name="WelfareId" />
@@ -85,8 +74,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityContainer Name="EbuyMyDbModelStoreContainer">
+          <EntitySet Name="AOH_ForumTopic" EntityType="Self.AOH_ForumTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AOH_JoinWelfare" EntityType="Self.AOH_JoinWelfare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AOH_SeckillingWinner" EntityType="Self.AOH_SeckillingWinner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AOH_Welfare" EntityType="Self.AOH_Welfare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="numbers" EntityType="Self.numbers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_welfare_id" Association="Self.fk_welfare_id">
+            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
+            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Ebuy.MyDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -255,6 +254,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
+using StackExchange.Profiling;
 
 
 namespace Ebuy
@@ -18,6 +19,7 @@ namespace Ebuy
     {
         protected void Application_Start()
         {
+            MiniProfiler.Settings.Results_Authorize = (req) => { return true; };
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -25,8 +27,18 @@ namespace Ebuy
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-        }
 
-        
+        }
+        //protected void Application_BeginRequest()
+        //{
+        //    if (Request.IsLocal)
+        //    {
+        //        MiniProfiler.Start();
+        //    }
+        //}
+        //protected void Application_EndRequest()
+        //{
+        //    MiniProfiler.Stop();
+        //}
     }
 }

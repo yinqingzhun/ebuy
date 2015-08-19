@@ -1,7 +1,8 @@
 ﻿CACHE MANIFEST
-#v1.2
+#v1.9
 CACHE:
-/scripts/test/j.js
 /scripts/jquery-1.7.1.js
 NETWORK:
-/appcache/
+/Scripts/test/j.js
+/content/site.css
+/Scripts/jquery-1.7.1.min.js
