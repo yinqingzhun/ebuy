@@ -120,7 +120,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DbAccess\DbAccess.csproj">
+    <ProjectReference Include="..\DbBase\DbBase.csproj">
       <Project>{9cf128be-c5b9-4e80-9493-e724435e7ea6}</Project>
       <Name>DbAccess</Name>
     </ProjectReference>

@@ -19,25 +19,25 @@ namespace Ebuy.Controllers
         [HttpGetActionMethodSelector(HttpMethod = "get")]
         public ActionResult Index()
         {
-            var profiler = MiniProfiler.Current;
-            string s = "";
-            //using (profiler.Step("find SeckillingWinner in db:"))
+            //var profiler = MiniProfiler.Current;
+            //string s = "";
+            ////using (profiler.Step("find SeckillingWinner in db:"))
+            ////{
+            ////    MyDbEntities db = new MyDbEntities();
+            ////    var o = db.AOH_SeckillingWinner.Find(10);
+            ////    s = o == null ? "Not Found" : "Found!";
+            ////}
+            //using (var conn = new ProfiledDbConnection(new SqlConnection(WebConfigurationManager.ConnectionStrings["aoh"].ToString()), profiler))
             //{
-            //    MyDbEntities db = new MyDbEntities();
-            //    var o = db.AOH_SeckillingWinner.Find(10);
-            //    s = o == null ? "Not Found" : "Found!";
+            //    conn.Open();
+            //    var command = conn.CreateCommand();
+            //    string sql = "select count(1) from sys.objects";
+            //    command.CommandText = sql;
+            //    object o = command.ExecuteScalar();
+            //    int i = int.Parse(o.ToString());
             //}
-            using (var conn = new ProfiledDbConnection(new SqlConnection(WebConfigurationManager.ConnectionStrings["aoh"].ToString()), profiler))
-            {
-                conn.Open();
-                var command = conn.CreateCommand();
-                string sql = "select count(1) from sys.objects";
-                command.CommandText = sql;
-                object o = command.ExecuteScalar();
-                int i = int.Parse(o.ToString());
-            }
 
-            ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。" + s;
+            ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。" ;
             return View();
 
         }
