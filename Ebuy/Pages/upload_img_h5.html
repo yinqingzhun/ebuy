@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <input type="file" />
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            var defer = $.Deferred(),
+                filtered = defer.pipe(function (value) {
+                    return value * 2;
+                });
+
+            defer.resolve(5);
+            filtered.done(function (value) {
+                alert("Value is ( 2*5 = ) 10: " + value);
+            });
+
+            jQuery.each({ a: 1, b: 2 }, function (name,value) { $('body').append('<div>'+name+':'+value+'</div>');});
+        });
+    </script>
+</body>
+</html>

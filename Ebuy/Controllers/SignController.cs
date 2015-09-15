@@ -12,9 +12,28 @@ namespace Ebuy.Controllers
 {
     public class SignController : Controller
     {
+        string ss = @"nonce=6b9b2e9e-55eb-48fe-a2b3-f23418d2c2e0&timestamp=1441683342&app_ver=2.4.0&content=%25E6%2581%25AD%25E5%2596%259C%25E6%25A5%25BC%25E4%25B8%25BB%25EF%25BC%258CCS75%25E6%2580%25A7%25E4%25BB%25B7%25E6%25AF%2594%25E7%259A%2584%25E7%25A1%25AE%25E5%25BE%2588%25E5%25A5%25BD%25EF%25BC%2581&topicId=8046574&method=user.forum.addreply&authentickitrequestparamname=FF75E61F8A94C3308709F9878E16BC7C373926BF5965F65993CE0BFBF1BABF62011FBDEDB2272E0CDBDA4093A194F2C7AA2819AD517450DD04A008F1EF790ACC5FAAA3C8B1570DA596CE3DBC2E2ADEB837ADDBB654BB8BDB9D22EC4E49F16E6368CF3D92C90F11FB72E992BEED27C45B5151622C937D140094E5ECA0472CF90A93B679BE&v=1.0&boardid=-1&app_key=100051&forumid=8050&title=&sign=6EB623AEBA6842B0B64F9337D043055B&auth_ticket=FF75E61F8A94C3308709F9878E16BC7C373926BF5965F65993CE0BFBF1BABF62011FBDEDB2272E0CDBDA4093A194F2C7AA2819AD517450DD04A008F1EF790ACC5FAAA3C8B1570DA596CE3DBC2E2ADEB837ADDBB654BB8BDB9D22EC4E49F16E6368CF3D92C90F11FB72E992BEED27C45B5151622C937D140094E5ECA0472CF90A93B679BE&channel=AF02&pid=193&app_type=android";
+        public Dictionary<string, object> GetDic(string queryString)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            Array.ForEach(queryString.Split('&'), p =>
+            {
+                string[] s = p.Split('=');
+                dic.Add(s[0], s[1]);
+            });
+            return dic;
+        }
         public ContentResult Ok()
         {
+            string r = "";//不一致的参数值
+            var copy = GetDic(ss);
             var dic = DeriveRequestParameters();
+
+            foreach (var key in copy.Keys)
+            {
+                if (!copy[key].ToString().Equals(dic[key].ToString()))
+                    r += key + ",";
+            }
             var signName = "sign";
             if (!dic.ContainsKey(signName))
             {
@@ -23,12 +42,9 @@ namespace Ebuy.Controllers
             var sign = Convert.ToString(dic[signName] ?? "");
             dic.Remove(signName);
 
-            var newDic = new Dictionary<string, object>();
-            dic.Keys.ToList().ForEach(p => newDic.Add(p, System.Web.HttpUtility.UrlEncode(dic[p].ToString())));
-
             int errorCode;
-            if (!new Signer().Valid(newDic, sign, out errorCode))
-                return Content(errorCode + ":" + Signer.GetValidErrorInfo(errorCode));
+            if (!new Signer().Valid(dic, sign, out errorCode))
+                return Content(r + Environment.NewLine + errorCode + ":" + Signer.GetValidErrorInfo(errorCode));
             return Content("OK");
 
         }
