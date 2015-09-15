@@ -294,6 +294,7 @@
     <Content Include="Images\turnplate-bg.png" />
     <Content Include="Images\turnplate-pointer.png" />
     <Content Include="Pages\404.htm" />
+    <Content Include="Pages\center\vertical.htm" />
     <Content Include="Pages\genericError.htm" />
     <Content Include="Pages\openApp.html" />
     <Content Include="Pages\rotate.html" />
