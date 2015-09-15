@@ -310,6 +310,7 @@
     <Content Include="Pages\openApp.html" />
     <Content Include="Pages\rotate.html" />
     <Content Include="Pages\flexBox.html" />
+    <Content Include="Pages\upload_img_h5.html" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
