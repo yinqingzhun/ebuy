@@ -9,16 +9,23 @@ using Ebuy.CustomAttribute;
 using Entity;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
+using System;
+using Ebuy.Filters;
+using Ebuy.BaseControllers;
 
 namespace Ebuy.Controllers
 {
-    public class HomeController : AsyncController
+    [ControllerExceptionAttribute(Order = 16)]
+    public class HomeController : BaseController
     {
+        
         [ValidateInput(true)]
         [ActionName("Index")]
         [HttpGetActionMethodSelector(HttpMethod = "get")]
+        [WrongTimeExceptionAttribute(Order = 13)]
         public ActionResult Index()
         {
+            throw new Exception();
             //var profiler = MiniProfiler.Current;
             //string s = "";
             ////using (profiler.Step("find SeckillingWinner in db:"))
@@ -87,5 +94,11 @@ namespace Ebuy.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Do(int id,string name)
+        {
+            return Content("");
+        }
+        
     }
 }
