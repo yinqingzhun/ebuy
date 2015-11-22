@@ -6,7 +6,7 @@
     <meta content="yes" name="apple-touch-fullscreen">
     <meta content="telephone=no" name="format-detection">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
     <title></title>
 </head>
@@ -14,20 +14,42 @@
     <form>
         <input type="file" />
     </form>
+    <script src="http://cdn.bootcss.com/seajs/3.0.1/sea.js" id="seanode"></script>
+    <!--<script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>-->
     <script type="text/javascript">
-        $(function () {
-            var defer = $.Deferred(),
-                filtered = defer.pipe(function (value) {
-                    return value * 2;
-                });
+        // seajs 的简单配置
+        seajs.config({
+            base: "/Scripts/",
+            alias: {
+                "jquery": "/Scripts/jquery-1.7.1.js"
+            }
+        })
 
-            defer.resolve(5);
-            filtered.done(function (value) {
-                alert("Value is ( 2*5 = ) 10: " + value);
+        // 加载入口模块
+        seajs.use(["jquery","test/main"], function ($,main) {
+            $(function () {
+                main.sayHi();
             });
+        })
 
-            jQuery.each({ a: 1, b: 2 }, function (name,value) { $('body').append('<div>'+name+':'+value+'</div>');});
-        });
+        //$(function () {
+        //    var defer = $.Deferred();
+        //    var filtered = defer.pipe(100);
+
+        //        //defer.pipe(function (value) {
+        //        //    $('body').append('<div>' + value + '</div>');
+        //        //    return value * 2;
+        //        //});
+
+        //    defer.resolve(5);
+        //    filtered.done(function (value) {
+        //        $('body').append('<div>' + "Value is ( 2*5 = ) 10: " + value + '</div>');
+        //    });
+
+        //    //jQuery.each({ a: 1, b: 2 }, function (name, value) {
+        //    //    $('body').append('<div>' + name + ':' + value + '</div>');
+        //    //});
+        //});
     </script>
 </body>
 </html>

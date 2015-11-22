@@ -25,7 +25,7 @@ namespace Ebuy.Controllers
         [WrongTimeExceptionAttribute(Order = 13)]
         public ActionResult Index()
         {
-            throw new Exception();
+            //throw new Exception();
             //var profiler = MiniProfiler.Current;
             //string s = "";
             ////using (profiler.Step("find SeckillingWinner in db:"))
