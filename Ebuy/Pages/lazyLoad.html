@@ -8,9 +8,44 @@
         img {
             width: 100%;
         }
+
+        .wallpaper-container {
+            width: 80%;
+            overflow-x: auto;
+            margin:0 auto;
+        }
+
+        .wallpaper-list {
+            width: 1400px;
+            height: 320px;
+            list-style: outside none none;
+        }
+
+        li {
+            float: left;
+            display: list-item;
+            list-style-type: none;
+            padding: 1px;
+        }
+
+            li img {
+                display: block;
+                width: 198px;
+            }
     </style>
 </head>
 <body>
+    <div class="wallpaper-container">
+        <ul class="wallpaper-list">
+            <li><img src="/Images/beauty/1.jpg"></li>
+            <li><img src="/Images/beauty/2.jpg"></li>
+            <li><img src="/Images/beauty/3.jpg"></li>
+            <li><img src="/Images/beauty/4.jpg"></li>
+            <li><img src="/Images/beauty/5.jpg"></li>
+            <li><img src="/Images/beauty/6.jpg"></li>
+            <li><img src="/Images/beauty/7.jpg"></li>
+        </ul>
+    </div>
     <div><a href="#"><img data-original="/Images/beauty/1.jpg"></a></div>
     <div><a href="#"><img data-original="/Images/beauty/2.jpg"></a></div>
     <div><a href="#"><img data-original="/Images/beauty/3.jpg"></a></div>
@@ -26,7 +61,7 @@
                 placeholder: "http://image.bitautoimg.com/wap/images/bbs_default.png",
                 effect: "fadeIn",
                 data_attribute: "original",
-                effectspeed:"slow"
+                effectspeed: "slow"
             });
             $(window).on('click', function () {
                 var w = $(this);
