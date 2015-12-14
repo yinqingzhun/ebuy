@@ -6,16 +6,84 @@
     <meta content="yes" name="apple-touch-fullscreen">
     <meta content="telephone=no" name="format-detection">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    
+
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <style type="text/css">
+        @-webkit-keyframes skyset {
+            0% {
+                background: black;
+            }
+
+            25% {
+                background: red;
+            }
+
+            50% {
+                background: blue;
+            }
+
+            75% {
+                background: yellow;
+            }
+
+            100% {
+                background: white;
+            }
+        }
+
+        .test1 {
+            width: 90px;
+            height: 60px;
+            -webkit-animation-name: skyset;
+            -webkit-animation-duration: 2000ms;
+            -webkit-animation-iteration-count: 1; /*无限循环*/
+            -webkit-animation-timing-function: linear;
+        }
+
+        #div {
+            margin: 3px;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0px;
+            top: 30px;
+            background: green;
+            display: none;
+        }
+
+            #div.newcolor {
+                background: blue;
+            }
+
+        #span {
+            color: red;
+        }
+    </style>
     <title></title>
 </head>
 <body>
-    <form>
-        <input type="file" />
-    </form>
+    <div id="outer" style="position:relative;border:1px solid brown;width:400px;height:400px;position:relative;">
+        <div id="inner" style="border:2px solid red;width:200px;height:100px;transform:rotate(-45deg);transform-origin:left top;transition:transform 15s linear ;position:absolute;left:25%;bottom:25%;border-right:0;border-top:0"></div>
+    </div>
+    <div style="background:url('/Images/disc-rotate.gif') no-repeat;
+   	 margin-top:100px;
+   	 margin-left:100px;
+   	 background-color:#ccc;
+   	 height: 500px;
+   	 width: 800px;
+   	 background-position: 100px 100px;"></div>
+    <div style="display:table;width:200px;table-layout:fixed;">
+        <div style="background-color:red;width:50px;height:50px;display:table-cell;vertical-align:middle;">No.1</div>
+        <div style="display:table-cell;background-color:green;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+            中华人民共和国中央人民政府今天成立了，哈哈哈哈哈！！！中华人民共和国中央人民政府今天成立了，啦啦啦。中华人民共和国中央人民政府今天成立了，哈哈哈哈哈！！！
+        </div>
+        <div style="width:50px;height:50px;display:table-cell;text-align:center;background-color:brown;">10</div>
+    </div>
+    <button id="show">Show Length of Queue</button>
+    <span id="span"></span>
+    <div id="div"></div>
     <script src="http://cdn.bootcss.com/seajs/3.0.1/sea.js" id="seanode"></script>
-    <!--<script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>-->
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
     <script type="text/javascript">
         // seajs 的简单配置
         seajs.config({
@@ -26,11 +94,27 @@
         })
 
         // 加载入口模块
-        seajs.use(["jquery","test/main"], function ($,main) {
+        seajs.use(["jquery", "test/main"], function ($, main) {
             $(function () {
                 main.sayHi();
             });
-        })
+        });
+
+        jQuery("#show").click(function () {
+            var n = $("#div").queue("fx");
+            $("#span").text("Queue length is: " + n.length);
+        });
+        function runIt() {
+            $("#div").show("slow");
+            $("#div").animate({ left: '+=200' }, 2000);
+            $("#div").slideToggle(1000);
+            $("#div").slideToggle("fast");
+            $("#div").animate({ left: '-=200' }, 1500);
+            $("#div").hide("slow");
+            $("#div").show(1200);
+            //$("#div").slideUp("normal", runIt);
+        }
+        runIt();
 
         //$(function () {
         //    var defer = $.Deferred();
