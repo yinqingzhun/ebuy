@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+        .star-box-line-container {
+        }
+
+        .star-box-line-inner-container {
+            display: block;
+            width: 300px;
+            margin: 0 auto;
+            background-color: green;
+        }
+
+
+
+
+        .star-box {
+            width: 60px;
+            height: 60px;
+            background-color: #db4422;
+            border-radius: 30px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .star-box-done {
+            background-color: #db4422;
+        }
+
+        .star-box-not-done {
+            background-color: #a3a3a3;
+        }
+
+        .star-box img {
+            width: 25px;
+        }
+
+        .pipe-line-container {
+        }
+
+        .pipe-line-inner-container {
+            display: block;
+            width: 300px;
+            margin: 0 auto;
+            background-color: green;
+            text-align: right;
+        }
+
+        .pipe-line-inner-container-align-left {
+            text-align: left;
+        }
+
+        .pipe-line-inner-container-align-right {
+            text-align: right;
+        }
+
+        .pipe-line-inner-container-align-left .pipe-vertical {
+            left: 24px;
+        }
+
+        .pipe-line-inner-container-align-right .pipe-vertical {
+            right: 24px;
+        }
+
+        .pipe-box {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .pipe-horizontal {
+            height: 12px;
+            background-color: #db4422;
+            width: 62px;
+            display: inline-block;
+            margin-left: -1px;
+            margin-right: -1px;
+        }
+
+        .pipe-vertical {
+            width: 12px;
+            background-color: #db4422;
+            height: 62px;
+            display: inline-block;
+            margin-top: -1px;
+            margin-bottom: -1px;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        .pipe-done {
+            background-color: #db4422;
+        }
+
+        .pipe-not-done {
+            background-color: #a3a3a3;
+        }
+
+        .out {
+            width: 100%;
+            height: 300px;
+        }
+
+        .in {
+            width: 200px;
+            background-color: gray;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+
+   <ol style="width:100px;">
+       <li>拉丝机的扣篮大赛就疯狂就速度考虑</li>
+       <li>拉丝机的扣篮大赛就疯狂就速度考虑</li>
+       <li>拉丝机的扣篮大赛就疯狂就速度考虑</li>
+   </ol>
+    <div id="stars" style="width:400px;height:400px;border:1px solid green;">
+        <div class="star-box-line-container">
+            <div class="star-box-line-inner-container">
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+            </div>
+        </div>
+        <div class="pipe-line-container">
+            <div class="pipe-line-inner-container pipe-line-inner-container-align-right">
+                <div class="pipe-vertical"></div>
+            </div>
+        </div>
+        <div class="star-box-line-container">
+            <div class="star-box-line-inner-container">
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+            </div>
+        </div>
+        <div class="pipe-line-container">
+            <div class="pipe-line-inner-container  pipe-line-inner-container-align-left">
+                <div class="pipe-vertical"></div>
+            </div>
+        </div>
+        <div class="star-box-line-container">
+            <div class="star-box-line-inner-container">
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                <div class="pipe-box">
+                    <div class="pipe-horizontal"></div>
+                </div>
+                <div class="star-box">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="out" style="display:none;">
+        <div class="in">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/Scripts/template.js"></script>
+    <script id="task_schedual_template" type="text/template">
+        {{each data as value i}}
+
+        <div class="star-box-line-container">
+            <div class="star-box-line-inner-container">
+                {{each value as v j}}
+                {{if v.Status=='done'}}
+                <div class="star-box star-box-done">
+                    <img src="/Images/ic_star_enabled.png" />
+                </div>
+                {{else if v.Status=='lock'}}
+                <div class="star-box star-box-not-done">
+                    <img src="/Images/ic_lock.png" />
+                </div>
+                {{else}}
+                <div class="star-box star-box-not-done">
+                    <img src="/Images/ic_star_disabled.png" />
+                </div>
+                {{/if}}
+
+                {{if j+1<value.length}}
+                <div class="pipe-box">
+                    {{ if v.Status!='lock'}}
+                    <div class="pipe-horizontal pipe-done"></div>
+                    {{else}}
+                    <div class="pipe-horizontal pipe-not-done"></div>
+                    {{/if}}
+                </div>
+                {{/if}}
+
+
+
+                {{/each}}
+            </div>
+        </div>
+
+
+        {{if i+1<data.length}}
+        <div class="pipe-line-container">
+            {{if i%2==0}}
+            <div class="pipe-line-inner-container pipe-line-inner-container-align-right">
+                {{ if value.length==3&&value[2].Status!='lock'}}
+                <div class="pipe-vertical pipe-done"></div>
+                {{else}}
+                <div class="pipe-vertical pipe-not-done"></div>
+                {{/if}}
+            </div>
+            {{else}}
+            <div class="pipe-line-inner-container pipe-line-inner-container-align-left">
+                {{ if value.length==3&&value[0].Status!='lock'}}
+                <div class="pipe-vertical pipe-done"></div>
+                {{else}}
+                <div class="pipe-vertical pipe-not-done"></div>
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+        {{/if}}
+
+
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+        var data = [{ IsSign: true },
+                    { IsSign: false },
+                    { IsSign: false },
+                    { IsSign: false },
+                    { IsSign: false },
+                    { IsSign: false },
+                    { IsSign: false }];
+        var pageCount = Math.ceil(data.length / 3);
+        var newData = [];
+        for (var i = 0; i < pageCount; i++) {
+            var array = [];
+            for (var j = i * 3; j < (i + 1) * 3 && j < data.length; j++) {
+                if (data[j].IsSign)
+                    data[j].Status = 'done';
+                else
+                    data[j].Status = 'lock';
+                if (j - 1 >= 0 && data[j - 1].IsSign && !data[j].IsSign)
+                    data[j].Status = 'active';
+
+
+                if (i % 2 == 0)
+                    array.push(data[j]);
+                else
+                    array.unshift(data[j]);
+            }
+            newData.push(array);
+        }
+        var sliderDom = template("task_schedual_template", { data: newData });
+        $("#stars").html(sliderDom);
+
+
+
+
+
+        //$(function () {
+        //    var defer = $.Deferred();
+        //    var filtered = defer.pipe(100);
+
+        //        //defer.pipe(function (value) {
+        //        //    $('body').append('<div>' + value + '</div>');
+        //        //    return value * 2;
+        //        //});
+
+        //    defer.resolve(5);
+        //    filtered.done(function (value) {
+        //        $('body').append('<div>' + "Value is ( 2*5 = ) 10: " + value + '</div>');
+        //    });
+
+        //    //jQuery.each({ a: 1, b: 2 }, function (name, value) {
+        //    //    $('body').append('<div>' + name + ':' + value + '</div>');
+        //    //});
+        //});
+    </script>
+</body>
+</html>

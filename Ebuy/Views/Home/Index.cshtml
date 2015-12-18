@@ -65,17 +65,14 @@
             window.location = s;
         }, 1000);
     };
-    try {
-        window.a && window.a();
-    } catch (e) {
-        alert(e);
-    }
+   
 
 </script>
 
 @section scripts
 {
     <script type="text/javascript">
+        $.noConflict(true);
         function Animal(gender) {
             this.gender = gender;
             this.showGender = function () {
@@ -129,6 +126,9 @@
         //        },
         //        'json');
         //});
+        $(function () {
+            
+        });
     </script>
 
 }

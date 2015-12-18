@@ -50,6 +50,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -201,6 +205,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="BaseControllers\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppCacheController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,7 +214,10 @@
     <Compile Include="CustomAttribute\CustomActionFilterAttribute.cs" />
     <Compile Include="CustomAttribute\HttpGetActionMethodSelectorAttribute.cs" />
     <Compile Include="CustomAttribute\VersionActionMethodSelector.cs" />
+    <Compile Include="Filters\ControllerExceptionAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Filters\GlobalExceptionAttribute.cs" />
+    <Compile Include="Filters\WrongTimeExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,13 +294,23 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Cache\test1.appcache" />
+    <Content Include="Cache\test11.appcache" />
+    <None Include="Properties\PublishProfiles\package.pubxml" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\disc-rotate.gif" />
+    <Content Include="Images\ic_lock.png" />
+    <Content Include="Images\ic_star_disabled.png" />
+    <Content Include="Images\ic_star_enabled.png" />
     <Content Include="Images\pan.png" />
     <Content Include="Images\turnplate-bg.png" />
     <Content Include="Images\turnplate-pointer.png" />
+    <Content Include="log4net.xml" />
+    <Content Include="Pages\500.htm" />
+    <Content Include="Pages\lazyLoad.html" />
+    <Content Include="Pages\layout_scrollin.html" />
+    <Content Include="Pages\stars.html" />
+    <Content Include="Pages\xss.htm" />
     <Content Include="Pages\404.htm" />
     <Content Include="Pages\center\vertical.htm" />
     <Content Include="Pages\genericError.htm" />
@@ -300,10 +318,15 @@
     <Content Include="Pages\rotate.html" />
     <Content Include="Pages\flexBox.html" />
     <Content Include="Pages\upload_img_h5.html" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\template.js" />
+    <Content Include="Scripts\test\jquery.lazyload.js" />
+    <Content Include="Scripts\test\main.js" />
+    <Content Include="Scripts\test\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
@@ -375,6 +398,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Images\beauty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

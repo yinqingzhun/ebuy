@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <link href="/Content/animate.css" rel="stylesheet" />
+    <title></title>
+    <style type="text/css">
+        body {
+            overflow: hidden;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .header {
+            height: 80px;
+            background-color: rgb(166, 242, 134);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+        }
+
+        .side {
+            background-color: rgb(21, 28, 66);
+            position: absolute;
+            width: 100px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .content {
+            background-color: rgb(21, 28, 66);
+            position: absolute;
+            right: 0;
+            top: 80px;
+            left: 100px;
+            bottom: 0;
+            background-color: rgb(241, 232, 232);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">HEADER</div>
+        <div class="side"></div>
+        <div class="content"></div>
+    </div>
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        setCookie('testName', 100, 1);
+        setCookie('age', 10990, 1);
+        console.log(getCookie('age'));
+        
+
+        $(function () {
+            $('.header').addClass('animated slideInDown')
+              .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend').trigger('');
+        });
+
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()+";path=/")
+        }
+
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^|\s*)" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+    </script>
+</body>
+</html>

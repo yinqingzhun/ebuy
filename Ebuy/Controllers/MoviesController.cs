@@ -20,6 +20,9 @@ namespace Ebuy.Controllers
 
         public ActionResult Index()
         {
+            var list = db.Movies.Where(p => p.ID > 0);
+            int count = list.Count();
+            list = list.OrderBy(p => p.Price);
             return View(db.Movies.ToList());
         }
 

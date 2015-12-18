@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>懒加载</title>
+    <style type="text/css">
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div><a href="#"><img data-original="/Images/beauty/1.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/2.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/3.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/4.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/5.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/6.jpg"></a></div>
+    <div><a href="#"><img data-original="/Images/beauty/7.jpg"></a></div>
+    <script src="/Scripts/jquery-1.7.1.js"></script>
+    <script src="/Scripts/test/jquery.lazyload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("img").lazyload({
+                placeholder: "http://image.bitautoimg.com/wap/images/bbs_default.png",
+                effect: "fadeIn",
+                data_attribute: "original",
+                effectspeed:"slow"
+            });
+            $(window).on('click', function () {
+                var w = $(this);
+                //console.log(w.height() + ':' + w.scrollLeft());
+            });
+        });
+    </script>
+</body>
+</html>
