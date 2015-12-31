@@ -159,14 +159,13 @@
             width: 300px;
             margin: 0 auto;
             background-color: green;
-            text-align:right;
+            text-align: right;
         }
 
         .pipe-box {
             display: table-cell;
             vertical-align: middle;
             text-align: center;
-            
         }
 
         .pipe-horizontal {
@@ -186,8 +185,8 @@
             display: inline-block;
             margin-top: -5px;
             margin-bottom: -5px;
-            position:relative;
-            right:24px;
+            position: relative;
+            right: 24px;
         }
 
 
@@ -208,19 +207,42 @@
             height: 40px;
             background-color: brown;
         }
+
+        body, input {
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+
+        #no1 {
+            background: #808000;
+            width: 300px;
+            height: 300px;
+            margin: 100px 0 0 100px;
+        }
+
+        [name=no2] {
+            background: #c0c0c0;
+            width: 50px;
+            height: 50px;
+            margin: 50px;
+        }
     </style>
 </head>
-<body>
+<body onselect="return false;" onselectstart="return false;">
+    <div>hello web</div>
+    <input type="text" value="hello" onselectstart="return false;" />
     <div id="outer" style="position:relative;border:1px solid brown;width:400px;height:400px;position:relative;">
         <div id="inner" style="border:2px solid red;width:200px;height:100px;transform:rotate(-45deg);transform-origin:left top;transition:transform 15s linear ;position:absolute;left:25%;bottom:25%;border-right:0;border-top:0"></div>
+        <div style="width:50px;height:50px;margin:50px;background-color:green;display:block;"></div>
+        <div style="width:50px;height:50px;margin:50px;background-color:brown;display:inline-block;"></div>
     </div>
-    <div style="background:url('/Images/disc-rotate.gif') no-repeat;
-   	 margin-top:100px;
-   	 margin-left:100px;
-   	 background-color:#ccc;
-   	 height: 500px;
-   	 width: 800px;
-   	 background-position: 100px 100px;"></div>
+    <div id="no1">
+        <div name="no2">Span2</div>
+        <div name="no2">Span2</div>
+    </div>
     <div style="display:table;width:200px;table-layout:fixed;">
         <div style="background-color:red;width:50px;height:50px;display:table-cell;vertical-align:middle;">No.1</div>
         <div style="display:table-cell;background-color:green;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">

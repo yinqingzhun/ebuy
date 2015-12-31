@@ -40,7 +40,7 @@
                     var t = setTimeout(function () {
                         var endTime = Date.now();
 
-                        if (!startTime || endTime - startTime < config.timeout + 200) {
+                        if ((!startTime || endTime - startTime < config.timeout + 200) && !window.document.webkitHidden) {
                             window.location = config.download_url;
                         } else {
 
