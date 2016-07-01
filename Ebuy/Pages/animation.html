@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <style type="text/css">
+        @-webkit-keyframes skyset {
+            0% {
+                background: black;
+            }
+
+            25% {
+                background: red;
+            }
+
+            50% {
+                background: blue;
+            }
+
+            75% {
+                background: yellow;
+            }
+
+            100% {
+                background: white;
+            }
+        }
+
+        .test1 {
+            width: 90px;
+            height: 60px;
+            -webkit-animation-name: skyset;
+            -webkit-animation-duration: 2000ms;
+            -webkit-animation-iteration-count: 1; /*无限循环*/
+            -webkit-animation-timing-function: linear;
+        }
+
+        #div {
+            margin: 3px;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0px;
+            top: 30px;
+            background: green;
+            display: none;
+        }
+
+            #div.newcolor {
+                background: blue;
+            }
+
+        #span {
+            color: red;
+        }
+    </style>
+    <title></title>
+    <style type="text/css">
+        .anim-arrow {
+            -webkit-animation-name: scaleLB;
+            animation-name: scaleLB;
+            -webkit-animation-delay: 0;
+            animation-delay: 0;
+            -webkit-animation-duration: 500ms;
+            animation-duration: 500ms;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-transform-origin: 0 100%;
+        }
+
+        @keyframes scaleLB {
+            0% {
+                -webkit-transform: scale(1,1);
+            }
+
+            50% {
+                -webkit-transform: scale(1.2,1.2);
+            }
+
+            100% {
+                -webkit-transform: scale(1,1);
+            }
+        }
+
+        .anim-shake {
+            animation-name: shake;
+            animation-delay: 600ms;
+            animation-duration: 1400ms;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes shake {
+            0%,80%,90%,100% {
+                -webkit-transform: translate3d(0,0,0);
+            }
+
+            10%,30%,50%,70% {
+                -webkit-transform: translate3d(-5px,0,0);
+            }
+
+            20%,40%,60% {
+                -webkit-transform: translate3d(5px,0,0);
+            }
+        }
+
+        .egg {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            margin-left: -84px;
+        }
+
+
+
+
+        .out {
+            width: 100%;
+            height: 300px;
+        }
+
+        .in {
+            width: 200px;
+            background-color: gray;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: brown;
+        }
+
+        body, input {
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+
+        #no1 {
+            background: #808000;
+            width: 300px;
+            height: 300px;
+            margin: 100px 0 0 100px;
+        }
+
+        [name=no2] {
+            background: #c0c0c0;
+            width: 50px;
+            height: 50px;
+            margin: 50px;
+        }
+
+
+        @keyframes test {
+            from {
+                opacity:0;
+            }
+
+            to {
+                opacity:1;
+            }
+        }
+
+        .tsj {
+            height: 35px;
+            width: 32px;
+            animation: test 2000ms;
+            animation-fill-mode: none;
+            background: url(http://www.web-tinker.com/share/兔斯基揉脸.png) 0 0;
+        }
+
+        .running {
+            height: 60px;
+            width: 90px;
+            background: url(http://img.xiaoho.com/2014/12/test.png) no-repeat 0 0;
+            visibility: hidden;
+            animation: run 350ms steps(1) infinite;
+        }
+
+        @keyframes run {
+            0% {
+                visibility: visible;
+                background-position: 0;
+            }
+
+            20% {
+                background-position: -90px 0;
+            }
+
+            40% {
+                background-position: -180px 0;
+            }
+
+            60% {
+                background-position: -270px 0;
+            }
+
+            80% {
+                background-position: -360px 0;
+            }
+
+            100% {
+                background-position: -450px 0;
+            }
+        }
+
+        .test2 {
+            height: 60px;
+            width: 90px;
+            background: url(http://img.xiaoho.com/2014/12/test.png) no-repeat 0 0;
+            animation: run2 350ms steps(5) infinite 0s;
+        }
+
+
+        @keyframes run2 {
+            0% {
+                visibility: visible;
+                background-position: 0;
+            }
+
+            100% {
+                background-position: -450px 0;
+            }
+        }
+
+        .show {
+            transition: all 3s;
+        }
+
+            .show:hover {
+                width: 250px;
+            }
+    </style>
+</head>
+<body onselect="return false;" onselectstart="return false;">
+
+    <div id="tsj" class="tsj show" style="background-color:orange;"></div>
+
+
+
+
+
+
+
+    <script src="http://cdn.bootcss.com/seajs/3.0.1/sea.js" id="seanode"></script>
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        // seajs 的简单配置
+        seajs.config({
+            base: "/Scripts/",
+            alias: {
+                "jquery": "/Scripts/jquery-1.7.1.js"
+            }
+        })
+
+        // 加载入口模块
+        seajs.use(["jquery", "test/main"], function ($, main) {
+            $(function () {
+                main.sayHi();
+            });
+        });
+        $(function () {
+            //setTimeout(function(){
+            //    $('#tsj').css({ 'display': 'block' });
+            //}, 2000);
+        });
+        jQuery("#show").click(function () {
+            var n = $("#div").queue("fx");
+            $("#span").text("Queue length is: " + n.length);
+        });
+        function runIt() {
+            $("#div").show("slow");
+            $("#div").animate({ left: '+=200' }, 2000);
+            $("#div").slideToggle(1000);
+            $("#div").slideToggle("fast");
+            $("#div").animate({ left: '-=200' }, 1500);
+            $("#div").hide("slow");
+            $("#div").show(1200);
+            //$("#div").slideUp("normal", runIt);
+        }
+        runIt();
+
+        $('<img />').bind('load', function () {
+            $('#outer').css({
+                'background-image': 'url(http://img1.baa.bitautotech.com/img/V2img1.baa.bitautotech.com/usergroup/2015/7/1/95e735db7f7e46739540fddd199f7636_720_0_max_jpg.jpg)',
+                'backgournd-size': '100% 100%'
+            });
+        }).attr('src', 'http://img1.baa.bitautotech.com/img/V2img1.baa.bitautotech.com/usergroup/2015/7/1/95e735db7f7e46739540fddd199f7636_720_0_max_jpg.jpg');
+
+        //$(function () {
+        //    var defer = $.Deferred();
+        //    var filtered = defer.pipe(100);
+
+        //        //defer.pipe(function (value) {
+        //        //    $('body').append('<div>' + value + '</div>');
+        //        //    return value * 2;
+        //        //});
+
+        //    defer.resolve(5);
+        //    filtered.done(function (value) {
+        //        $('body').append('<div>' + "Value is ( 2*5 = ) 10: " + value + '</div>');
+        //    });
+
+        //    //jQuery.each({ a: 1, b: 2 }, function (name, value) {
+        //    //    $('body').append('<div>' + name + ':' + value + '</div>');
+        //    //});
+        //});
+    </script>
+</body>
+</html>

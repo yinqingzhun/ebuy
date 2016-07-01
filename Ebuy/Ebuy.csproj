@@ -91,6 +91,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -221,12 +223,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handler\Handler.ashx.cs">
+      <DependentUpon>Handler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\MovieModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\Ask.Filter.ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Ask.ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Data.Zhidao.ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="SignalR\ChatHub.cs" />
     <Compile Include="SignalR\MyConnection1.cs" />
     <Compile Include="SignalR\Startup.cs" />
+    <Compile Include="UGCSync\UGCSyncService.asmx.cs">
+      <DependentUpon>UGCSyncService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-Ebuy-20150306092126.mdf" />
@@ -295,21 +319,45 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Cache\test11.appcache" />
+    <Content Include="Handler\Handler.ashx" />
     <None Include="Properties\PublishProfiles\package.pubxml" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\beauty\1.jpg" />
+    <Content Include="Images\beauty\2.jpg" />
+    <Content Include="Images\beauty\3.jpg" />
+    <Content Include="Images\beauty\4.jpg" />
+    <Content Include="Images\beauty\5.jpg" />
+    <Content Include="Images\beauty\6.jpg" />
+    <Content Include="Images\beauty\6305090e91e99c817960752a92b8a10aa4e05e9d1137e2-1Z3fGK_fw658.png" />
+    <Content Include="Images\beauty\7.jpg" />
+    <Content Include="Images\btn_cai_nor.png" />
+    <Content Include="Images\btn_zan_nor.png" />
     <Content Include="Images\disc-rotate.gif" />
+    <Content Include="Images\high.jpg" />
     <Content Include="Images\ic_lock.png" />
     <Content Include="Images\ic_star_disabled.png" />
     <Content Include="Images\ic_star_enabled.png" />
+    <Content Include="Images\img_guwenban_dl.png" />
     <Content Include="Images\pan.png" />
     <Content Include="Images\turnplate-bg.png" />
     <Content Include="Images\turnplate-pointer.png" />
-    <Content Include="log4net.xml" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Pages\500.htm" />
+    <Content Include="Pages\answer.html" />
+    <Content Include="Pages\page.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Pages\transform.html" />
     <Content Include="Pages\lazyLoad.html" />
     <Content Include="Pages\layout_scrollin.html" />
+    <Content Include="Pages\fullpage.html" />
     <Content Include="Pages\stars.html" />
+    <Content Include="Pages\animation.html" />
+    <Content Include="Pages\center.html" />
     <Content Include="Pages\xss.htm" />
     <Content Include="Pages\404.htm" />
     <Content Include="Pages\center\vertical.htm" />
@@ -320,6 +368,8 @@
     <Content Include="Pages\upload_img_h5.html" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
+    <Content Include="Scripts\fullPage.js" />
+    <Content Include="Scripts\imgLoader.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -344,7 +394,44 @@
     <Content Include="Scripts\test\exercise.js" />
     <Content Include="Scripts\test\jd.js" />
     <Content Include="Scripts\test\mbase.js" />
+    <Content Include="Service References\Ask.Filter.ServiceReference\Ebuy.Ask.Filter.ServiceReference.ReceiveMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Ask.Filter.ServiceReference\Service.disco" />
+    <None Include="Service References\Ask.Filter.ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\Ask.Filter.ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\Ask.Filter.ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Ask.ServiceReference\AskUGCSyncService.disco" />
+    <None Include="Service References\Ask.ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\Ask.ServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\Ask.ServiceReference\Ebuy.Ask.ServiceReference.GetUGCSyncEntityInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Ask.ServiceReference\Ebuy.Ask.ServiceReference.ReceiveMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Ask.ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Data.Zhidao.ServiceReference\AskUGCSyncService.disco" />
+    <None Include="Service References\Data.Zhidao.ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\Data.Zhidao.ServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\Data.Zhidao.ServiceReference\Ebuy.Data.Zhidao.ServiceReference.GetUGCSyncEntityInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Data.Zhidao.ServiceReference\Ebuy.Data.Zhidao.ServiceReference.ReceiveMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Data.Zhidao.ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SignalR\index.html" />
+    <Content Include="UGCSync\UGCSyncService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -393,12 +480,14 @@
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\AppCache\Index.cshtml" />
     <Content Include="Views\AppCache\Index2.cshtml" />
+    <None Include="Service References\Ask.Filter.ServiceReference\Service.wsdl" />
+    <None Include="Service References\Ask.ServiceReference\AskUGCSyncService.wsdl" />
+    <None Include="Service References\Data.Zhidao.ServiceReference\AskUGCSyncService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Images\beauty\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -414,6 +503,18 @@
       <Project>{6cb78aa4-6571-4a50-beeb-123340208018}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{737a823b-909f-43bf-a9b9-278781a38bfc}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Ask.Filter.ServiceReference\" />
+    <WCFMetadataStorage Include="Service References\Ask.ServiceReference\" />
+    <WCFMetadataStorage Include="Service References\Data.Zhidao.ServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

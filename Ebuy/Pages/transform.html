@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>懒加载</title>
+    <style type="text/css">
+        .photo-wall img {
+            width: 100%;
+        }
+
+        .photo-wall div {
+            width: 99%;
+            margin: 0 auto;
+        }
+
+        .wallpaper-outer-container {
+            width: 100%;
+            height: 250px;
+        }
+
+        .wallpaper-inner-container {
+            width: 85%;
+            overflow-x: hidden;
+            margin: 0 auto;
+            height: 250px;
+        }
+
+        .wallpaper-list {
+            list-style: outside none none;
+            width: 120px;
+            height: 250px;
+            position: absolute;
+            left: 50%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        li {
+            display: table-cell;
+            list-style-type: none;
+            padding: 1px;
+            vertical-align: middle;
+        }
+
+            li img {
+                width: 120px;
+            }
+
+        @media only screen and (max-width:414px) {
+            .photo-wall div {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .wallpaper-inner-container {
+                width: 100%;
+                overflow-x: hidden;
+            }
+        }
+
+        .a.b {
+            background: #e5c9c9;
+        }
+
+        .a {
+            background: #abc;
+        }
+
+        .rotatex {
+            animation: rotatex 15s linear infinite;
+            transform-origin: 0 50%;
+        }
+
+        @keyframes rotatex {
+            from {
+                transform: rotateX(0deg);
+            }
+
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        .rotatey {
+            animation: rotatey 15s linear infinite;
+            transform-origin: 50% 50%;
+        }
+
+        @keyframes rotatey {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .rotatez {
+            animation: rotatez 15s linear infinite;
+            transform-origin: 50% 50%;
+        }
+
+        @keyframes rotatez {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        .wallpaper-list img {
+            width: 120px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="wallpaper-inner-container" style="perspective: 800px;">
+        <div class="wallpaper-list" >
+            <img src="/Images/beauty/1.jpg">
+            <img src="/Images/beauty/2.jpg">
+            <img src="/Images/beauty/3.jpg">
+            <img src="/Images/beauty/4.jpg">
+            <img src="/Images/beauty/5.jpg">
+            <img src="/Images/beauty/6.jpg">
+        </div>
+    </div>
+    <div class="photo-wall">
+        <div><a href="#"><img class="rotatex" data-original="http://img4.baa.bitautotech.com/club/topic/2016/1/11/cc14b9d677f84d378cae4659e249bb69.jpg"></a></div>
+        <div><a href="#"><img class="rotatey" data-original="http://img4.baa.bitautotech.com/club/topic/2016/1/11/1f4a722dac5a4ae18355509a63eb2639.JPG"></a></div>
+        <div><a href="#"><img class="rotatez" data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/6295adf526654ee1b061fd3f2f40a48f.JPG"></a></div>
+        <div><a href="#"><img data-original="http://pic.baa.bitautotech.com/club/topic/2016/1/11/cc72cc33d97044b4b533e84d488b68c5.JPG"></a></div>
+        <div><a href="#"><img data-original="http://pic.baa.bitautotech.com/club/topic/2016/1/11/52c8e78ac9c4455ba73173a9ef62e250.JPG"></a></div>
+        <div><a href="#"><img data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/b1a71f09746b44698e54e48d50cafbf3.JPG"></a></div>
+        <div><a href="#"><img data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/d40cd8e0b45e4167b9c1bb693439dbb8.JPG"></a></div>
+    </div>
+    <script src="/Scripts/jquery-1.7.1.js"></script>
+    <script src="/Scripts/test/jquery.lazyload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".photo-wall img").lazyload({
+                placeholder: "http://image.bitautoimg.com/wap/images/bbs_default.png",
+            });
+
+            var index = 0
+            var length = $('.wallpaper-list img').length;
+            $('.wallpaper-list img').each(function (i, ele) {
+                $(ele).css("transform", "rotateY(" + i * 360 / length + "deg) translateZ(150px)")
+                .click(function () {
+                    $('.wallpaper-list').css("transform", "rotateY(" + --index * 360 / length + "deg)");
+                });
+
+            });
+
+
+
+
+
+        });
+    </script>
+</body>
+</html>

@@ -42,7 +42,6 @@ namespace Ebuy.Controllers
 
         //
         // GET: /Movies/Create
-
         public ActionResult Create()
         {
             return View();
@@ -81,6 +80,7 @@ namespace Ebuy.Controllers
         // POST: /Movies/Edit/5
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Movie movie)
         {
             //ModelState.AddModelError("", "xx");

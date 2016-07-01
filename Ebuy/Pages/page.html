@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>话题详情</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <style type="text/css">
+        html {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            user-select:none;
+        }
+
+        body {
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        .topic-info-box {
+            padding: 0 10px;
+        }
+
+        .user-info-box {
+            padding: 15px 0;
+            border-bottom: 1px solid #eaeced;
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .user-avatar-box {
+            display: table-cell;
+            vertical-align: middle;
+            width: 36px;
+        }
+
+            .user-avatar-box img {
+                width: 36px;
+                height: 36px;
+                border: 2px solid #dbdbdb;
+                border-radius: 18px;
+                vertical-align: middle;
+            }
+
+        .user-name-box {
+            display: table-cell;
+            vertical-align: middle;
+            max-width: 40%;
+            padding: 0 10px;
+        }
+
+        .user-name {
+            font-size: 15px;
+            line-height: 22px;
+            color: #333333;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .user-introducation {
+            font-size: 11px;
+            line-height: 18px;
+            color: #969696;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-follow-box {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100px;
+            text-align: center;
+        }
+
+        .btn-follow {
+            background-color: green;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .topic-content {
+            padding: 17px 0 0 0;
+            line-height: 24px;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        .image-list-box {
+            padding: 10px;
+        }
+
+        .image-box {
+        }
+
+        .image {
+            width: 80px;
+            height: 80px;
+            background-position: center center;
+            background-size: cover;
+            float: left;
+            margin: 5px;
+        }
+
+        .labels-box {
+            position: relative;
+        }
+
+        .labels-inner-box {
+            overflow-x: auto;
+        }
+
+        .labels-box .cover-start {
+            width: 20px;
+            height: 50px;
+            position: absolute;
+            left: -10px;
+            background-color: rgba(255,255,255,0.6);
+            display: inline-block;
+        }
+
+        .labels-box .cover-end {
+            width: 20px;
+            height: 50px;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            background-color: rgba(255,255,255,0.6);
+            display: inline-block;
+        }
+
+        .label-box {
+            padding: 11px 0;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+            .label-box span {
+                display: inline-block;
+                border: 2px solid #d4d4d4;
+                font-size: 14px;
+                line-height: 24px;
+                color: #8f8f8f;
+                margin: 0 5px;
+                padding: 0 10px;
+                border-radius: 14px;
+            }
+
+        .time {
+            font-size: 11px;
+            line-height: 18px;
+            color: #969696;
+            border-bottom: 1px solid #eaeced;
+            clear: both;
+            padding-bottom: 10px;
+        }
+
+        .title {
+            color: #353c41;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .divider {
+            background-color: #eaeced;
+            height: 10px;
+        }
+
+        .answer-list-box {
+            padding: 0 10px;
+        }
+
+        .answer-box {
+            border-top: 1px solid #eaeced;
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .answer-content-box {
+            display: table-cell;
+            padding: 16px 0 11px 10px;
+            vertical-align: middle;
+        }
+
+        .answer-content {
+            padding: 10px 0 0 0;
+            line-height: 20px;
+            font-size: 13px;
+            color: #767676;
+        }
+
+        .digg-box {
+            padding: 12px 0 0 0;
+        }
+
+            .digg-box div {
+                font-size: 15px;
+                color: #bebebe;
+                margin-right: 30px;
+                margin-left: 3px;
+                float: left;
+                line-height: 30px;
+            }
+
+            .digg-box img {
+                width: 30px;
+                height: 30px;
+                float: left;
+            }
+
+        .replyer-avatar-box {
+            vertical-align: top;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img style="width:100%;" src="/Images/img_guwenban_dl.png" />
+    </div>
+    <div class="topic-info-box">
+        <div class="user-info-box">
+            <div class="user-avatar-box">
+                <span>
+                    <img src="http://img2.baa.bitautotech.com/newavatar/2015/05/26/9680631_120_9002ed36-49af-42fc-9381-1d115bcf58f6.jpg" />
+                </span>
+            </div>
+            <div class="user-name-box">
+                <div class="user-name">昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称昵称</div>
+                <div class="user-introducation">签名签名签名签名签名签名签名签名签名签名</div>
+            </div>
+            <div class="btn-follow-box">
+                <div class="btn-follow">关注话题</div>
+            </div>
+        </div>
+        <div class="topic-content">
+            昨晚车窗没关好，露了一条缝，刚好下雨，把我里面座椅打湿一半，窗边按纽也打湿到，音响上有小水珠，我拿干抹布擦干了按纽的水，请问这样打湿有什么影响吗
+        </div>
+        <div class="image-box">
+            <div class="image" style="background-image:url(http://img3.bitautoimg.com/autoalbum/files/20160428/117/0324381176_3.jpg)"></div>
+            <div class="image" style="background-image:url(http://img3.bitautoimg.com/autoalbum/files/20160428/117/0324381176_3.jpg)"></div>
+            <div class="image" style="background-image:url(http://img3.bitautoimg.com/autoalbum/files/20160428/117/0324381176_3.jpg)"></div>
+            <div class="image" style="background-image:url(http://img3.bitautoimg.com/autoalbum/files/20160428/117/0324381176_3.jpg)"></div>
+        </div>
+        <div class="time">04-24</div>
+        <div class="labels-box">
+            <div class="cover-start"></div>
+            <div class="cover-end"></div>
+            <div class="labels-inner-box">
+                <div class="label-box"><span>奥迪</span><span>性能车</span><span>进口车</span><span>小钢炮</span><span>颜值高</span><span>运动</span></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="divider"></div>
+    <div class="answer-list-box">
+        <div class="title">热门回答</div>
+        <div class="answer-box">
+            <div class="user-avatar-box replyer-avatar-box">
+                <span>
+                    <img src="http://img2.baa.bitautotech.com/newavatar/2015/05/26/9680631_120_9002ed36-49af-42fc-9381-1d115bcf58f6.jpg" />
+                </span>
+            </div>
+
+            <div class="answer-content-box">
+                <div class="user-name">我是大白猪我是大白猪我是大白猪我是大白猪我是大白猪我是</div>
+                <div class="answer-content">上次我也是这种情况，下的很大的雨，幸亏座椅很吸水，窗边按钮全湿了，可是我试了试，没什么问题，也许厂家早已考虑到这些问题。</div>
+                <div class="digg-box">
+                    <img src="/Images/btn_zan_nor.png" /><div>10</div>
+                    <img src="/Images/btn_cai_nor.png" /><div>1</div>
+                </div>
+            </div>
+        </div>
+        <div class="answer-box">
+            <div class="user-avatar-box">
+                <span>
+                    <img src="http://img2.baa.bitautotech.com/newavatar/2015/05/26/9680631_120_9002ed36-49af-42fc-9381-1d115bcf58f6.jpg" />
+                </span>
+            </div>
+
+            <div class="answer-content-box replyer-avatar-box">
+                <div class="user-name">我是大白猪我是大白猪我是大白猪我是大白猪我是大白猪我是</div>
+                <div class="answer-content">上次我也是这种情况，下的很大的雨，幸亏座椅很吸水，窗边按钮全湿了，可是我试了试，没什么问题，也许厂家早已考虑到这些问题。</div>
+                <div class="digg-box">
+                    <img src="/Images/btn_zan_nor.png" /><div>10</div>
+                    <img src="/Images/btn_cai_nor.png" /><div>1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="answer-list-box">
+        <div class="title">最新回答</div>
+        <div class="answer-box">
+            <div class="user-avatar-box replyer-avatar-box">
+                <span>
+                    <img src="http://img2.baa.bitautotech.com/newavatar/2015/05/26/9680631_120_9002ed36-49af-42fc-9381-1d115bcf58f6.jpg" />
+                </span>
+            </div>
+
+            <div class="answer-content-box">
+                <div class="user-name">我是大白猪我是大白猪我是大白猪我是大白猪我是大白猪我是</div>
+                <div class="answer-content">上次我也是这种情况，下的很大的雨，幸亏座椅很吸水，窗边按钮全湿了，可是我试了试，没什么问题，也许厂家早已考虑到这些问题。</div>
+                <div class="digg-box">
+                    <img src="/Images/btn_zan_nor.png" /><div>10</div>
+                    <img src="/Images/btn_cai_nor.png" /><div>1</div>
+                </div>
+            </div>
+        </div>
+        <div class="answer-box">
+            <div class="user-avatar-box">
+                <span>
+                    <img src="http://img2.baa.bitautotech.com/newavatar/2015/05/26/9680631_120_9002ed36-49af-42fc-9381-1d115bcf58f6.jpg" />
+                </span>
+            </div>
+
+            <div class="answer-content-box replyer-avatar-box">
+                <div class="user-name">我是大白猪我是大白猪我是大白猪我是大白猪我是大白猪我是</div>
+                <div class="answer-content">上次我也是这种情况，下的很大的雨，幸亏座椅很吸水，窗边按钮全湿了，可是我试了试，没什么问题，也许厂家早已考虑到这些问题。</div>
+                <div class="digg-box">
+                    <img src="/Images/btn_zan_nor.png" /><div>10</div>
+                    <img src="/Images/btn_cai_nor.png" /><div>1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.labels-inner-box').scroll(function () {
+                $('.labels-box .cover-start').css('display', $(this)[0].scrollLeft > 0 ? 'inline-block' : 'none');
+                $('.labels-box .cover-end').css('display', $(this)[0].scrollLeft < ($(this)[0].scrollWidth - $(this).width()) ? 'inline-block' : 'none');
+            });
+        });
+    </script>
+</body>
+</html>

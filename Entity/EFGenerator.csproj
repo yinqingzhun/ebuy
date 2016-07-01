@@ -65,18 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AOH_ForumTopic.cs">
-      <DependentUpon>MyDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AOH_JoinWelfare.cs">
-      <DependentUpon>MyDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AOH_SeckillingWinner.cs">
-      <DependentUpon>MyDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AOH_Welfare.cs">
-      <DependentUpon>MyDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="MyDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,13 +80,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="numbers.cs">
-      <DependentUpon>MyDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="MyDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyDb.Designer.cs</LastGenOutput>

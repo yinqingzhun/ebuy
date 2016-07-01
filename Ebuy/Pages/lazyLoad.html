@@ -5,64 +5,109 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1,user-scalable=no" />
     <title>懒加载</title>
     <style type="text/css">
-        img {
+        .photo-wall img {
             width: 100%;
         }
 
-        .wallpaper-container {
-            width: 80%;
-            overflow-x: auto;
-            margin:0 auto;
+        .photo-wall div {
+            width: 99%;
+            margin: 0 auto;
         }
 
-        .wallpaper-list {
-            width: 1400px;
-            height: 320px;
+        .wallpaper-outer-container {
+            width: 100%;
+        }
+
+        .wallpaper-inner-container {
+            width: 85%;
+            overflow-x: hidden;
+            margin: 0 auto;
+        }
+
+        ul.wallpaper-list {
             list-style: outside none none;
         }
 
         li {
-            float: left;
-            display: list-item;
+            display: table-cell;
             list-style-type: none;
             padding: 1px;
+            vertical-align: middle;
         }
 
             li img {
                 display: block;
-                width: 198px;
+                width: 120px;
             }
+
+        @media only screen and (max-width:414px) {
+            .photo-wall div {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .wallpaper-inner-container {
+                width: 100%;
+                overflow-x: hidden;
+            }
+        }
+
+        .a.b {
+            background: #e5c9c9;
+        }
+
+        .a {
+            background: #abc;
+        }
     </style>
 </head>
 <body>
-    <div class="wallpaper-container">
-        <ul class="wallpaper-list">
-            <li><img src="/Images/beauty/1.jpg"></li>
-            <li><img src="/Images/beauty/2.jpg"></li>
-            <li><img src="/Images/beauty/3.jpg"></li>
-            <li><img src="/Images/beauty/4.jpg"></li>
-            <li><img src="/Images/beauty/5.jpg"></li>
-            <li><img src="/Images/beauty/6.jpg"></li>
-            <li><img src="/Images/beauty/7.jpg"></li>
-        </ul>
+    <div class="wallpaper-outer-container a b">
+        <div class="wallpaper-inner-container">
+            <ul class="wallpaper-list">
+                <li><img src="/Images/beauty/1.jpg"></li>
+                <li><img src="/Images/beauty/2.jpg"></li>
+                <li><img src="/Images/beauty/3.jpg"></li>
+                <li><img src="/Images/beauty/4.jpg"></li>
+                <li><img src="/Images/beauty/5.jpg"></li>
+                <li><img src="/Images/beauty/6.jpg"></li>
+                <li><img src="/Images/beauty/7.jpg"></li>
+            </ul>
+        </div>
     </div>
-    <div><a href="#"><img data-original="/Images/beauty/1.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/2.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/3.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/4.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/5.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/6.jpg"></a></div>
-    <div><a href="#"><img data-original="/Images/beauty/7.jpg"></a></div>
+    <div class="photo-wall">
+        <div><a href="#"><img data-original="http://img4.baa.bitautotech.com/club/topic/2016/1/11/cc14b9d677f84d378cae4659e249bb69.jpg"></a></div>
+        <div><a href="#"><img data-original="http://img4.baa.bitautotech.com/club/topic/2016/1/11/1f4a722dac5a4ae18355509a63eb2639.JPG"></a></div>
+        <div><a href="#"><img data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/6295adf526654ee1b061fd3f2f40a48f.JPG"></a></div>
+        <div><a href="#"><img data-original="http://pic.baa.bitautotech.com/club/topic/2016/1/11/cc72cc33d97044b4b533e84d488b68c5.JPG"></a></div>
+        <div><a href="#"><img data-original="http://pic.baa.bitautotech.com/club/topic/2016/1/11/52c8e78ac9c4455ba73173a9ef62e250.JPG"></a></div>
+        <div><a href="#"><img data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/b1a71f09746b44698e54e48d50cafbf3.JPG"></a></div>
+        <div><a href="#"><img data-original="http://img3.baa.bitautotech.com/club/topic/2016/1/11/d40cd8e0b45e4167b9c1bb693439dbb8.JPG"></a></div>
+    </div>
     <script src="/Scripts/jquery-1.7.1.js"></script>
     <script src="/Scripts/test/jquery.lazyload.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("img").lazyload({
+            $(".photo-wall img").lazyload({
                 placeholder: "http://image.bitautoimg.com/wap/images/bbs_default.png",
-                effect: "fadeIn",
-                data_attribute: "original",
-                effectspeed: "slow"
             });
+
+            var left = 0;
+            setInterval(function () {
+                var o = $('.wallpaper-inner-container');
+                var nv = o.scrollLeft() + 1;
+                o.scrollLeft(nv);
+                if (o.scrollLeft() === left && left > 0) {
+                    nv = 0;
+                    o.scrollLeft(nv);
+                }
+                left = nv;
+
+            }, 50);
+
+
+
+
             $(window).on('click', function () {
                 var w = $(this);
                 //console.log(w.height() + ':' + w.scrollLeft());

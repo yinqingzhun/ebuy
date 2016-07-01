@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <style type="text/css">
+        .p {
+            position: absolute;
+            left: 10%;
+            top: 0;
+            bottom: 0;
+            right: 10%;
+            background-color: lightyellow;
+            margin: 30px;
+        }
+
+        .q {
+            position: absolute;
+            background-color: lightgray;
+            top: 30%;
+            margin: 10px;
+        }
+
+        .i div {
+            margin: 20px;
+        }
+    </style>
+    <title></title>
+</head>
+<body onselect="return false;" onselectstart="return false;">
+
+    <div class="p">
+        <div class="q">
+            <div class="i">
+                <div style="line-height:30px;">第一行</div>
+                <div style="line-height:30px;">第二行</div>
+            </div>
+            <div id="tid" style="background-image:url('/Images/beauty/1.jpg');background-size:cover;background-position:center center;width:200px;height:200px;"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.q').css('top', ($('.p').height() - $('.q').height()) / 2 + "px");
+
+            var imageViewer = (function () {
+                var ele = $('<div style="position:fixed;left:0;right:0;top:0;bottom:0;background-color:#000;overflow-y:auto;text-align:center;display:table;width:100%;height:100%;"><span style="vertical-align:middle;display:table-cell;"><img style="max-width:100%;" src="" /></span></div>');
+                ele.hide().appendTo('body');
+                if ('ontouchend' in ele[0])
+                    ele.on('touchend', function () { $(this).hide(); });
+                else
+                    ele.on('click', function () { $(this).hide(); });
+
+                function show(imgUrl) {
+                    if (imgUrl) {
+                        ele.show().find('img').attr('src', imgUrl);
+                    }
+                }
+
+                return {
+                    show: show
+                };
+            })();
+            //imageViewer.show('/Images/high.jpg');
+
+
+        });
+
+
+    </script>
+</body>
+</html>
