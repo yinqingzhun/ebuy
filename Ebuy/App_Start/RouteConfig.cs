@@ -17,7 +17,16 @@ namespace Ebuy
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                ,namespaces:new string[] { "Ebuy.d" }
+                //,constraints:new { controller = @"^m\w*"  }
+
             );
+            routes.MapRoute(
+                name:"app_version"
+                ,url: "{app}/{version}/x/{controller}/{action}"
+                , defaults: new { controller = "Test", action = "Index", id = UrlParameter.Optional }
+                //, constraints: new { controller = @"^m\w*" }
+                );
         }
     }
 }

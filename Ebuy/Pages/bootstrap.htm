@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#askPushingWindow">Open Modal</button>
+
+    <div class="modal fade" id="askPushingWindow" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">问答推送</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="usr">接收人昵称:</label>
+                        <textarea type="text" class="form-control" id="usr" data-toggle="tooltip" title="用半角逗号分割多个昵称" placeholder="用半角逗号分割多个昵称"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">已推送的接收人:</label>
+                        <div>张三,李四，jack</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            var html = "<div class='modal fade' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-body' style='padding:0;'><div class='alert @alertType' style='margin:0;'>@msg</div></div></div></div></div>";
+            function alert(msg, type) {
+                type = type || 'alert-info';
+                html = html.replace('@msg', msg).replace('@alertType', type);
+                $('body').append(html);
+                $(html).modal();
+                setTimeout(function () {
+                    $(html).modal({ backdrop: true });
+                }, 5000);
+            }
+            function alertSuccess(msg) {
+                alert(msg, 'alert-success');
+            }
+            alert('ok');
+
+        });
+    </script>
+</body>
+</html>
