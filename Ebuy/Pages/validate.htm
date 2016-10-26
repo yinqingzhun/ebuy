@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
+</head>
+<body style="margin:10px;">
+
+
+
+    <form class="cmxform" id="commentForm" method="get" action="">
+        <fieldset>
+            <legend>输入您的名字，邮箱，URL，备注。</legend>
+            <p class="form-group">
+                <label for="cname">Name (必需, 最小两个字母)</label>
+                <input id="cname" name="name" minlength="2" type="text" class="form-control" required>
+            </p>
+            <p>
+                <label for="cemail">E-Mail (必需)</label>
+                <input id="cemail" type="email" name="email" class="form-control" required>
+            </p>
+            <p>
+                <label for="curl">URL (可选)</label>
+                <input id="curl" type="url" class="form-control" name="url">
+            </p>
+            <p>
+                <label for="ccomment">备注 (必需)</label>
+                <textarea id="ccomment" name="comment" class="form-control" required></textarea>
+            </p>
+            <p>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </p>
+        </fieldset>
+    </form>
+
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/Scripts/bootstrap/bootstrap.js"></script>
+    <script src="/Scripts/test/bootstrap.prompt.js"></script>
+    <script src="/Scripts/jquery.validate.js"></script>
+    <script src="/Scripts/jquery.validate.cn.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('form').validate();
+        });
+    </script>
+</body>
+</html>

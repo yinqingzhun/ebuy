@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>网页内容抓取</title>
+</head>
+<body>
+    <form method="get">
+        <div>URL</div>
+        <div><input type="url" name="url" value="http://www.autohome.com.cn/news/"/></div>
+        <div>Filter</div>
+        <div><input type="text" name="filter" /></div>
+        <div><input type="submit" value="Run" /></div>
+    </form>
+    <div>
+        List
+    </div>
+    <div>
+        @Html.Raw(ViewBag.List)
+    </div>
+</body>
+</html>

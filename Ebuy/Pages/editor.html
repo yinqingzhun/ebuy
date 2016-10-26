@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/content/simditor/simditor.css" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <textarea id="editor" placeholder="请输入内容" autofocus></textarea><hr />
+    
+
+    <div id="content"></div>
+    <button id="click">click me</button>
+    <script type="text/javascript" src="/scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/scripts/simditor/module.js"></script>
+    <script type="text/javascript" src="/scripts/simditor/hotkeys.js"></script>
+    <script type="text/javascript" src="/scripts/simditor/uploader.js"></script>
+    <script type="text/javascript" src="/scripts/simditor/simditor.js"></script>
+    <script type="text/javascript">
+        ////获取iframe的document对象
+        //function getDoc() {
+        //    var win = window.frames['container'];
+        //    return win.document || win.contentDocument;
+        //}
+
+        ////打开document对象，向其写入初始化内容，以兼容FireFox
+        //doc = getDoc();
+        //if (doc) {
+        //    doc.open();
+        //    doc.write('<html><body></body></html>');
+        //    //打开document对象编辑模式
+        //    doc.designMode = "on";
+        //    doc.close();
+        //}
+
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            upload: {
+                url: '/api/test/upload',
+                params: null,
+                fileKey: 'file',
+                connectionCount: 1,
+                leaveConfirm: '正在上传图片，你确定要离开？'
+            }
+            //optional options
+        });
+        function showContent(target, text) {
+
+        }
+        var e = document.getElementById('editor');
+        if ('onpropertychange' in e)
+            e.onpropertychange = function () {
+                document.getElementById('content').innerText = editor.getValue();
+            };
+        else if ('oninput' in e)
+            e.oninput = function () {
+                document.getElementById('content').innerText = editor.getValue();
+            };
+
+        document.getElementById('click').onclick = function () {
+            document.getElementById('content').innerText = editor.getValue();
+        };
+
+
+
+    </script>
+</body>
+</html>

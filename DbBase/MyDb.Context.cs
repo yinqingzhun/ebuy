@@ -25,10 +25,5 @@ namespace Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<AOH_ForumTopic> AOH_ForumTopic { get; set; }
-        public DbSet<AOH_JoinWelfare> AOH_JoinWelfare { get; set; }
-        public DbSet<AOH_SeckillingWinner> AOH_SeckillingWinner { get; set; }
-        public DbSet<AOH_Welfare> AOH_Welfare { get; set; }
-        public DbSet<numbers> numbers { get; set; }
     }
 }

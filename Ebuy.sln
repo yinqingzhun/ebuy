@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ebuy", "Ebuy\Ebuy.csproj", "{3CBBD015-1BD7-4D52-9703-D03710B6ADA7}"
 EndProject
@@ -16,6 +16,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{D4995C0C-0FC2-4B5C-9079-598764A69605}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{737A823B-909F-43BF-A9B9-278781A38BFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI2", "WebAPI2\WebAPI2.csproj", "{FDBC32FD-CBE6-475B-B730-C2E706318ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI2.Tests", "WebAPI2.Tests\WebAPI2.Tests.csproj", "{EA8719B9-6C2D-4304-9339-8AD155246246}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA47D5C4-3EA3-4450-8613-DA67FC6ADA2D}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +60,14 @@ Global
 		{737A823B-909F-43BF-A9B9-278781A38BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{737A823B-909F-43BF-A9B9-278781A38BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{737A823B-909F-43BF-A9B9-278781A38BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDBC32FD-CBE6-475B-B730-C2E706318ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDBC32FD-CBE6-475B-B730-C2E706318ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDBC32FD-CBE6-475B-B730-C2E706318ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDBC32FD-CBE6-475B-B730-C2E706318ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8719B9-6C2D-4304-9339-8AD155246246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8719B9-6C2D-4304-9339-8AD155246246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8719B9-6C2D-4304-9339-8AD155246246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8719B9-6C2D-4304-9339-8AD155246246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

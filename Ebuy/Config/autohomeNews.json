@@ -1,0 +1,6 @@
+﻿{
+  "ListUrl": "http://www.autohome.com.cn/news/",
+  "ListFilter": "//div[@id=\"auto-channel-lazyload-article\"]/ul[@class=\"article\"]/li",
+  "DetailUrl": ""
+
+}

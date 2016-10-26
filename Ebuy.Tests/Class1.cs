@@ -14,7 +14,7 @@ namespace Ebuy.Tests
             try
             {
                 MyDbEntities db = new MyDbEntities();
-                Assert.IsTrue(db.numbers.Any());
+               
             }
             catch (Exception)
             {

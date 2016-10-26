@@ -1,263 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Ebuy.MyDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityType Name="AOH_ForumTopic">
-          <Key>
-            <PropertyRef Name="ForumTopicID" />
-          </Key>
-          <Property Name="ForumTopicID" Type="int" Nullable="false" />
-          <Property Name="PicCover" Type="varchar" MaxLength="1000" />
-          <Property Name="PicUrl" Type="varchar" MaxLength="1000" />
-        </EntityType>
-        <EntityType Name="AOH_JoinWelfare">
-          <Key>
-            <PropertyRef Name="JoinWelfareID" />
-          </Key>
-          <Property Name="JoinWelfareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserPhoneNum" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="WelfareId" Type="int" Nullable="false" />
-          <Property Name="JoinWelfareTime" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AOH_SeckillingWinner">
-          <Key>
-            <PropertyRef Name="WinnerId" />
-          </Key>
-          <Property Name="WinnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
-          <Property Name="Enabled" Type="bit" Nullable="false" />
-          <Property Name="EffectiveTime" Type="datetime" />
-          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AOH_Welfare">
-          <Key>
-            <PropertyRef Name="WelfareId" />
-          </Key>
-          <Property Name="WelfareId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="StartTime" Type="datetime" Nullable="false" />
-          <Property Name="EndTime" Type="datetime" Nullable="false" />
-          <Property Name="Requirement" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="SupportedPersonCount" Type="int" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Type" Type="nvarchar" MaxLength="1" Nullable="false" />
-          <Property Name="DisplayNo" Type="int" Nullable="false" />
-          <Property Name="CoverUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Np" Type="int" />
-        </EntityType>
-        <EntityType Name="numbers">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Value" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-        </EntityType>
-        <Association Name="fk_welfare_id">
-          <End Role="AOH_Welfare" Type="Self.AOH_Welfare" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AOH_JoinWelfare" Type="Self.AOH_JoinWelfare" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AOH_Welfare">
-              <PropertyRef Name="WelfareId" />
-            </Principal>
-            <Dependent Role="AOH_JoinWelfare">
-              <PropertyRef Name="WelfareId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="EbuyMyDbModelStoreContainer">
-          <EntitySet Name="AOH_ForumTopic" EntityType="Self.AOH_ForumTopic" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AOH_JoinWelfare" EntityType="Self.AOH_JoinWelfare" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AOH_SeckillingWinner" EntityType="Self.AOH_SeckillingWinner" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AOH_Welfare" EntityType="Self.AOH_Welfare" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="numbers" EntityType="Self.numbers" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_welfare_id" Association="Self.fk_welfare_id">
-            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
-            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="Ebuy.MyDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EbuyMyDbModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Ebuy.MyDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="MyDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AOH_ForumTopic" EntityType="Ebuy.MyDbModel.AOH_ForumTopic" />
-          <EntitySet Name="AOH_JoinWelfare" EntityType="Ebuy.MyDbModel.AOH_JoinWelfare" />
-          <EntitySet Name="AOH_SeckillingWinner" EntityType="Ebuy.MyDbModel.AOH_SeckillingWinner" />
-          <EntitySet Name="AOH_Welfare" EntityType="Ebuy.MyDbModel.AOH_Welfare" />
-          <EntitySet Name="numbers" EntityType="Ebuy.MyDbModel.numbers" />
-          <AssociationSet Name="fk_welfare_id" Association="Ebuy.MyDbModel.fk_welfare_id">
-            <End Role="AOH_Welfare" EntitySet="AOH_Welfare" />
-            <End Role="AOH_JoinWelfare" EntitySet="AOH_JoinWelfare" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="AOH_ForumTopic">
-          <Key>
-            <PropertyRef Name="ForumTopicID" />
-          </Key>
-          <Property Name="ForumTopicID" Type="Int32" Nullable="false" />
-          <Property Name="PicCover" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
-          <Property Name="PicUrl" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="AOH_JoinWelfare">
-          <Key>
-            <PropertyRef Name="JoinWelfareID" />
-          </Key>
-          <Property Name="JoinWelfareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="UserPhoneNum" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="WelfareId" Type="Int32" Nullable="false" />
-          <Property Name="JoinWelfareTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AOH_Welfare" Relationship="Ebuy.MyDbModel.fk_welfare_id" FromRole="AOH_JoinWelfare" ToRole="AOH_Welfare" />
-        </EntityType>
-        <EntityType Name="AOH_SeckillingWinner">
-          <Key>
-            <PropertyRef Name="WinnerId" />
-          </Key>
-          <Property Name="WinnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Enabled" Type="Boolean" Nullable="false" />
-          <Property Name="EffectiveTime" Type="DateTime" Precision="3" />
-          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="AOH_Welfare">
-          <Key>
-            <PropertyRef Name="WelfareId" />
-          </Key>
-          <Property Name="WelfareId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Requirement" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
-          <Property Name="SupportedPersonCount" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Detail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Type" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
-          <Property Name="DisplayNo" Type="Int32" Nullable="false" />
-          <Property Name="CoverUrl" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Np" Type="Int32" />
-          <NavigationProperty Name="AOH_JoinWelfare" Relationship="Ebuy.MyDbModel.fk_welfare_id" FromRole="AOH_Welfare" ToRole="AOH_JoinWelfare" />
-        </EntityType>
-        <EntityType Name="numbers">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="Int32" />
-          <Property Name="name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <Association Name="fk_welfare_id">
-          <End Role="AOH_Welfare" Type="Ebuy.MyDbModel.AOH_Welfare" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AOH_JoinWelfare" Type="Ebuy.MyDbModel.AOH_JoinWelfare" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AOH_Welfare">
-              <PropertyRef Name="WelfareId" />
-            </Principal>
-            <Dependent Role="AOH_JoinWelfare">
-              <PropertyRef Name="WelfareId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+      <Schema Namespace="Ebuy.MyDbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="MyDbEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          </EntityContainer>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EbuyMyDbModelStoreContainer" CdmEntityContainer="MyDbEntities">
-          <EntitySetMapping Name="AOH_ForumTopic">
-            <EntityTypeMapping TypeName="Ebuy.MyDbModel.AOH_ForumTopic">
-              <MappingFragment StoreEntitySet="AOH_ForumTopic">
-                <ScalarProperty Name="ForumTopicID" ColumnName="ForumTopicID" />
-                <ScalarProperty Name="PicCover" ColumnName="PicCover" />
-                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AOH_JoinWelfare">
-            <EntityTypeMapping TypeName="Ebuy.MyDbModel.AOH_JoinWelfare">
-              <MappingFragment StoreEntitySet="AOH_JoinWelfare">
-                <ScalarProperty Name="JoinWelfareID" ColumnName="JoinWelfareID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPhoneNum" ColumnName="UserPhoneNum" />
-                <ScalarProperty Name="WelfareId" ColumnName="WelfareId" />
-                <ScalarProperty Name="JoinWelfareTime" ColumnName="JoinWelfareTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AOH_SeckillingWinner">
-            <EntityTypeMapping TypeName="Ebuy.MyDbModel.AOH_SeckillingWinner">
-              <MappingFragment StoreEntitySet="AOH_SeckillingWinner">
-                <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
-                <ScalarProperty Name="EffectiveTime" ColumnName="EffectiveTime" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AOH_Welfare">
-            <EntityTypeMapping TypeName="Ebuy.MyDbModel.AOH_Welfare">
-              <MappingFragment StoreEntitySet="AOH_Welfare">
-                <ScalarProperty Name="WelfareId" ColumnName="WelfareId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
-                <ScalarProperty Name="SupportedPersonCount" ColumnName="SupportedPersonCount" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Detail" ColumnName="Detail" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="DisplayNo" ColumnName="DisplayNo" />
-                <ScalarProperty Name="CoverUrl" ColumnName="CoverUrl" />
-                <ScalarProperty Name="Np" ColumnName="Np" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="numbers">
-            <EntityTypeMapping TypeName="Ebuy.MyDbModel.numbers">
-              <MappingFragment StoreEntitySet="numbers">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
-        <DesignerProperty Name="UseLegacyProvider" Value="True" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="False" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>
