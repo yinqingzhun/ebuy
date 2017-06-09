@@ -12,7 +12,9 @@
 
     <div id="content"></div>
     <button id="click">click me</button>
-    <script type="text/javascript" src="/scripts/jquery-1.7.1.js"></script>
+    <input type="file" id="upload-file"/>
+    <!--<script type="text/javascript" src="/scripts/jquery-1.7.1.js"></script>-->
+    <script type="text/javascript" src="/scripts/simditor/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/simditor/module.js"></script>
     <script type="text/javascript" src="/scripts/simditor/hotkeys.js"></script>
     <script type="text/javascript" src="/scripts/simditor/uploader.js"></script>
@@ -45,22 +47,18 @@
             }
             //optional options
         });
-        function showContent(target, text) {
+        var uploader = simple.uploader({
+            url: '/api/test/upload'
+        });
 
-        }
-        var e = document.getElementById('editor');
-        if ('onpropertychange' in e)
-            e.onpropertychange = function () {
-                document.getElementById('content').innerText = editor.getValue();
-            };
-        else if ('oninput' in e)
-            e.oninput = function () {
-                document.getElementById('content').innerText = editor.getValue();
-            };
+        $('#upload-file').on('change', function (e) {
+            uploader.upload(this.files);
+        });
+        
+        $('#click').click(function () {
 
-        document.getElementById('click').onclick = function () {
-            document.getElementById('content').innerText = editor.getValue();
-        };
+        });
+       
 
 
 

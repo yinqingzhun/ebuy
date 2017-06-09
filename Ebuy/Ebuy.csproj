@@ -447,6 +447,7 @@
     <Content Include="Scripts\jquery.validate.cn.js" />
     <Content Include="Scripts\simditor\hotkeys.js" />
     <Content Include="Scripts\simditor\hotkeys.min.js" />
+    <Content Include="Scripts\simditor\jquery.min.js" />
     <Content Include="Scripts\simditor\module.js" />
     <Content Include="Scripts\simditor\module.min.js" />
     <Content Include="Scripts\simditor\simditor.js" />
